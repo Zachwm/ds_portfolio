@@ -1,7 +1,7 @@
 ---
-title: "Client Report - [Insert Project Title]"
-subtitle: "Course DS 250"
-author: "[STUDENT NAME]"
+title: "Client Report - Recoding Range Variables: Smarter than Dummy Encoding"
+subtitle: "Unit 5 Task 2"
+author: "Zach McLaughlin"
 format:
   html:
     self-contained: true
@@ -25,4 +25,161 @@ execute:
     
 ---
 
-### Paste in a template
+```{python}
+import pandas as pd 
+import numpy as np
+from lets_plot import *
+# add the additional libraries you need to import for ML here
+
+LetsPlot.setup_html(isolated_frame=True)
+from sklearn.preprocessing import OneHotEncoder
+```
+
+
+```{python}
+df = pd.read_csv('../StarWars.csv', encoding='ISO-8859-1')
+
+col_rename = {
+  'RespondentID': 'id',
+  'Have you seen any of the 6 films in the Star Wars franchise?': 'seen_sw',
+  'Do you consider yourself to be a fan of the Star Wars film franchise?': 'fan_sw',
+  'Which of the following Star Wars films have you seen? Please select all that apply.': 'seen_1',
+  'Unnamed: 4': 'seen_2',
+  'Unnamed: 5': 'seen_3',
+  'Unnamed: 6': 'seen_4',
+  'Unnamed: 7': 'seen_5',
+  'Unnamed: 8': 'seen_6',
+  'Please rank the Star Wars films in order of preference with 1 being your favorite film in the franchise and 6 being your least favorite film.': 'rank_1',
+  'Unnamed: 10': 'rank_2',
+  'Unnamed: 11': 'rank_3',
+  'Unnamed: 12': 'rank_4',
+  'Unnamed: 13': 'rank_5',
+  'Unnamed: 14': 'rank_6',
+  'Please state whether you view the following characters favorably, unfavorably, or are unfamiliar with him/her.': 'HanSolo_rank',
+  'Unnamed: 16': 'LukeSkywalker_rank',
+  'Unnamed: 17': 'PrincessLeia_rank',
+  'Unnamed: 18': 'AnakinSkywalker_rank',
+  'Unnamed: 19': 'ObiWan_rank',
+  'Unnamed: 20': 'EmperorPalpatine_rank',
+  'Unnamed: 21': 'DarthVader_rank',
+  'Unnamed: 22': 'LandoCalrissian_rank',
+  'Unnamed: 23': 'BobaFett_rank',
+  'Unnamed: 24': 'C-3P0_rank',
+  'Unnamed: 25': 'R2D2_rank',
+  'Unnamed: 26': 'JarJar_rank',
+  'Unnamed: 27': 'PadmeAmidala_rank',
+  'Unnamed: 28': 'Yoda_rank',
+  'Which character shot first?': 'character_shot_first',
+  'Are you familiar with the Expanded Universe?': 'know_expanded',
+  'Do you consider yourself to be a fan of the Expanded Universe?ï¿½ï¿½': 'fan_of_expanded',
+  'Do you consider yourself to be a fan of the Star Trek franchise?': 'st_fan',
+  'Gender': 'gender',
+  'Age': 'age',
+  'Household Income': 'house_income',
+  'Education': 'education',
+  'Location (Census Region)': 'census_location'
+}
+
+df.rename(columns=col_rename, inplace=True)
+df.drop(index=0, inplace=True)
+
+for col in ['seen_1', 'seen_2', 'seen_3', 'seen_4', 'seen_5', 'seen_6']:
+    df[col] = df[col].apply(lambda x: 1 if not pd.isna(x) else 0)
+
+df
+```
+
+## QUESTION 1
+
+1. __Clean and format the data so that it can be used in a machine learning model.__ As you format the data, you should complete each item listed below. In your final report provide an excerpt of the reformatted data with a short description of the changes made.  
+
+    a. Create a new column that converts the age ranges to a single number. Drop the age range categorical column  
+    a. Create a new column that converts the education groupings to a single number. Drop the school categorical column  
+    a. Create a new column that converts the income ranges to a single number. Drop the income range categorical column  
+    a. Create your target (also known as “y” or “label”) column based on the new income range column  
+    a. Encode favorability ratings as a number. Remove the favorability categorical columns.
+    a. One-hot encode all remaining categorical columns
+
+_type your write-up and analysis here_
+
+```{python}
+age_map = {
+    '18-29': 23.5,
+    '30-44': 37,
+    '45-60': 52.5,
+    '> 60': 65
+}
+df['age_num'] = df['age'].map(age_map)
+df.drop(columns='age', inplace=True)
+
+education_map = {
+    'Less than high school degree': 0,
+    'High school degree': 1,
+    'Some college or Associate degree': 2,
+    'Bachelor degree': 3,
+    'Graduate degree': 4
+}
+df['education_num'] = df['education'].map(education_map)
+df.drop(columns='education', inplace=True)
+
+income_map = {
+    '$0 - $24,999': 12500,
+    '$25,000 - $49,999': 37500,
+    '$50,000 - $99,999': 75000,
+    '$100,000 - $149,999': 125000,
+    '$150,000+': 175000
+}
+df['income_num'] = df['house_income'].map(income_map)
+df.drop(columns='house_income', inplace=True)
+
+df['target'] = df['income_num'].apply(lambda x: 1 if x >= 100000 else 0)
+
+favor_map = {
+    'Very favorably': 2,
+    'Somewhat favorably': 1,
+    'Unfamiliar (N/A)': 0,
+    'Neither favorably nor unfavorably (neutral)': 0,
+    'Somewhat unfavorably': -1,
+    'Very unfavorably': -2,
+    np.nan: 0
+}
+
+favor_cols = [col for col in df.columns if '_rank' in col]
+for col in favor_cols:
+    df[col.replace('_rank', '_score')] = df[col].map(favor_map)
+
+df.drop(columns=favor_cols, inplace=True)
+
+num_cols = ['age_num', 'education_num', 'income_num'] + [f'rank_{i}' for i in range(1,7)]
+df[num_cols] = df[num_cols].apply(pd.to_numeric, errors='coerce')
+df[num_cols] = df[num_cols].fillna(df[num_cols].median())
+
+cat_cols = ['seen_sw', 'fan_sw', 'character_shot_first', 'know_expanded', 'fan_of_expanded', 'st_fan', 'gender', 'census_location']
+for col in cat_cols:
+    if col in df.columns:
+        df[col] = df[col].fillna('Missing')
+
+cat_cols = ['seen_sw', 'fan_sw', 'character_shot_first', 'know_expanded', 'fan_of_expanded', 'st_fan', 'gender', 'census_location']
+
+encoder = OneHotEncoder(drop='first', dtype=int, sparse_output=False)
+encoded_array = encoder.fit_transform(df[cat_cols])
+
+encoded_df = pd.DataFrame(
+    encoded_array,
+    columns=encoder.get_feature_names_out(cat_cols),
+    index=df.index
+)
+
+df.drop(columns=cat_cols, inplace=True)
+
+df = pd.concat([df, encoded_df], axis=1)
+
+for col in [f'rank_{i}' for i in range(1,7)]:
+    df[col] = df[col].astype(int)
+df['education_num'] = df['education_num'].astype(int)
+df['age_num'] = df['age_num'].astype(int)
+
+df.drop(columns='id', inplace=True)
+
+df
+```

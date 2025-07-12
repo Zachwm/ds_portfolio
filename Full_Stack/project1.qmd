@@ -1,7 +1,7 @@
 ---
-title: "Client Report - [Insert Project Title]"
-subtitle: "Course DS 250"
-author: "[STUDENT NAME]"
+title: "Client Report - The War with Star Wars"
+subtitle: "Unit 5 Task 1"
+author: "Zach McLaughlin"
 format:
   html:
     self-contained: true
@@ -25,4 +25,220 @@ execute:
     
 ---
 
-### Paste in a template
+```{python}
+import pandas as pd 
+import numpy as np
+from lets_plot import *
+# add the additional libraries you need to import for ML here
+
+LetsPlot.setup_html(isolated_frame=True)
+```
+
+## QUESTION 1
+
+__Shorten the column names and clean them up for easier use with pandas.__ Provide a table or list that exemplifies how you fixed the names.  
+
+Here we mapped the CSV to a pandas DataFrame, making sense of the column names and cleaning them for easier use.
+
+```{python}
+df = pd.read_csv('../StarWars.csv', encoding='ISO-8859-1')
+
+col_rename = {
+  'RespondentID': 'id',
+  'Have you seen any of the 6 films in the Star Wars franchise?': 'seen_sw',
+  'Do you consider yourself to be a fan of the Star Wars film franchise?': 'fan_sw',
+  'Which of the following Star Wars films have you seen? Please select all that apply.': 'seen_1',
+  'Unnamed: 4': 'seen_2',
+  'Unnamed: 5': 'seen_3',
+  'Unnamed: 6': 'seen_4',
+  'Unnamed: 7': 'seen_5',
+  'Unnamed: 8': 'seen_6',
+  'Please rank the Star Wars films in order of preference with 1 being your favorite film in the franchise and 6 being your least favorite film.': 'rank_1',
+  'Unnamed: 10': 'rank_2',
+  'Unnamed: 11': 'rank_3',
+  'Unnamed: 12': 'rank_4',
+  'Unnamed: 13': 'rank_5',
+  'Unnamed: 14': 'rank_6',
+  'Please state whether you view the following characters favorably, unfavorably, or are unfamiliar with him/her.': 'HanSolo_rank',
+  'Unnamed: 16': 'LukeSkywalker_rank',
+  'Unnamed: 17': 'PrincessLeia_rank',
+  'Unnamed: 18': 'AnakinSkywalker_rank',
+  'Unnamed: 19': 'ObiWan_rank',
+  'Unnamed: 20': 'EmperorPalpatine_rank',
+  'Unnamed: 21': 'DarthVader_rank',
+  'Unnamed: 22': 'LandoCalrissian_rank',
+  'Unnamed: 23': 'BobaFett_rank',
+  'Unnamed: 24': 'C-3P0_rank',
+  'Unnamed: 25': 'R2D2_rank',
+  'Unnamed: 26': 'JarJar_rank',
+  'Unnamed: 27': 'PadmeAmidala_rank',
+  'Unnamed: 28': 'Yoda_rank',
+  'Which character shot first?': 'character_shot_first',
+  'Are you familiar with the Expanded Universe?': 'know_expanded',
+  'Do you consider yourself to be a fan of the Expanded Universe?ï¿½ï¿½': 'fan_of_expanded',
+  'Do you consider yourself to be a fan of the Star Trek franchise?': 'st_fan',
+  'Gender': 'gender',
+  'Age': 'age',
+  'Household Income': 'house_income',
+  'Education': 'education',
+  'Location (Census Region)': 'census_location'
+}
+
+df.rename(columns=col_rename, inplace=True)
+df.drop(index=0, inplace=True)
+
+for col in ['seen_1', 'seen_2', 'seen_3', 'seen_4', 'seen_5', 'seen_6']:
+    df[col] = df[col].apply(lambda x: 1 if not pd.isna(x) else 0)
+
+df
+```
+
+
+## QUESTION 2
+
+__Filter the dataset to 835 respondents that have seen at least one film__ (Hint: Don't use the column `Have you seen any of the 6 films in the Star Wars franchise?`) Not much to show here by way of output. Print the shape (i.e. number of rows and number of columns) of the filtered dataset.
+
+Since the seen_sw response may be unreliable, I instead checked the individual seen_* columns to determine if a respondent had seen at least one movie.
+
+```{python}
+seen_cols = ['seen_1', 'seen_2', 'seen_3', 'seen_4', 'seen_5', 'seen_6']
+
+df_filtered = df[df[seen_cols].sum(axis=1) >= 1]
+
+df_filtered.shape[0]
+```
+
+## QUESTION 3
+
+__Validate that the data provided on GitHub lines up with the article by recreating 2 of the visuals from the article.__  These visuals should be similar, but don't have to be exact. They need to be close enough that we can validate that the values in the dataset match the graphs in the chart. Though their charts were built using a different plotting software, the more you push yourself for an exact replica, the more you will learn. Spend at least a couple of hours on this. 
+
+Below are two graphs that display information from the survey in the csv. The first graph shows the favorite movie out of people who have seen all six movies. The second graph shows a percentage of people who have seen each individual episode out of those who have seen at least one.
+
+```{python}
+seen_cols = ['seen_1', 'seen_2', 'seen_3', 'seen_4', 'seen_5', 'seen_6']
+rank_cols = ['rank_1', 'rank_2', 'rank_3', 'rank_4', 'rank_5', 'rank_6']
+
+df_filtered = df[df[seen_cols].sum(axis=1) == 6]
+fav_counts = (df_filtered[rank_cols].apply(pd.to_numeric) == 1).sum().reset_index()
+fav_counts.columns = ['movie', 'count']
+
+name_map = {
+    'rank_1': 'The Phantom Menace',
+    'rank_2': 'Attack of the Clones',
+    'rank_3': 'Revenge of the Sith',
+    'rank_4': 'A New Hope',
+    'rank_5': 'The Empire Strikes Back',
+    'rank_6': 'Return of the Jedi'
+}
+
+fav_counts['movie'] = fav_counts['movie'].map(name_map)
+
+reordered_names = [
+    'Return of the Jedi',
+    'The Empire Strikes Back',
+    'A New Hope',
+    'Revenge of the Sith',
+    'Attack of the Clones',
+    'The Phantom Menace'
+]
+
+fav_counts['movie'] = pd.Categorical(fav_counts['movie'], categories=reordered_names, ordered=True)
+
+
+(
+ggplot(fav_counts, aes(x='movie', y='count'))
+  + geom_bar(stat='identity')
+  + labs(
+      title='What\'s the Best \'Star Wars Movie',
+      subtitle='Of 471 respondents who have seen all six films',
+      x='',
+      y=''
+  )
+  + coord_flip()
+  + theme_minimal()
+  + theme(
+      panel_grid=element_blank(),
+      axis_text_y=element_blank(),
+      axis_ticks_y=element_blank(),
+      plot_title = element_text(hjust=.06, vjust=2, margin=[5, 5, 10], face='bold'),
+      plot_subtitle = element_text(hjust=.07),
+      plot_title_position = 'plot'
+  )
+  + geom_text(x=5, y=55, label='10%')
+  + geom_text(x=4, y=20, label='4')
+  + geom_text(x=3, y=30, label='6')
+  + geom_text(x=2, y=135, label='27')
+  + geom_text(x=1, y=175, label='36')
+  + geom_text(x=0, y=87, label='17')
+)
+
+```
+
+```{python}
+seen_cols = ['seen_1', 'seen_2', 'seen_3', 'seen_4', 'seen_5', 'seen_6']
+
+df_filtered = df[df[seen_cols].sum(axis=1) >= 1]
+
+seen_counts = df_filtered[seen_cols].apply(pd.to_numeric).sum().reset_index()
+seen_counts.columns = ['movie', 'count']
+
+movie_names = ['Ep I', 'Ep II', 'Ep III', 'Ep IV', 'Ep V', 'Ep VI']
+seen_counts['movie'] = movie_names
+
+total_respondents = len(df_filtered)
+seen_counts['percent'] = (seen_counts['count'] / total_respondents) * 100
+
+ordered_names = ['Ep VI', 'Ep V', 'Ep IV', 'Ep III', 'Ep II', 'Ep I']
+seen_counts['movie'] = pd.Categorical(seen_counts['movie'], categories=ordered_names, ordered=True)
+
+name_map = {
+    'Ep I': 'The Phantom Menace',
+    'Ep II': 'Attack of the Clones',
+    'Ep III': 'Revenge of the Sith',
+    'Ep IV': 'A New Hope',
+    'Ep V': 'The Empire Strikes Back',
+    'Ep VI': 'Return of the Jedi'
+}
+
+seen_counts['movie'] = seen_counts['movie'].map(name_map)
+
+reordered_names = [
+    'Return of the Jedi',
+    'The Empire Strikes Back',
+    'A New Hope',
+    'Revenge of the Sith',
+    'Attack of the Clones',
+    'The Phantom Menace'
+]
+
+seen_counts['movie'] = pd.Categorical(seen_counts['movie'], categories=reordered_names, ordered=True)
+
+seen_counts
+
+(
+    ggplot(seen_counts, aes(x='movie', y='percent'))
+    + geom_bar(stat='identity')
+    + labs(
+        title='Which Star Wars Movie Have You Seen?',
+        subtitle=f'Of {total_respondents} respondents',
+        x='',
+        y=''
+    )
+    + coord_flip()
+    + theme_minimal()
+    + theme(
+        panel_grid=element_blank(),
+        axis_text_y=element_blank(),
+        axis_ticks_y=element_blank(),
+        plot_title = element_text(hjust=.06, vjust=2, margin=[5, 5, 10], face='bold'),
+        plot_subtitle = element_text(hjust=.07),
+        plot_title_position = 'plot'
+        )
+    + geom_text(x=5, y=85, label='80%')
+    + geom_text(x=4, y=71, label='68')
+    + geom_text(x=3, y=69, label='66')
+    + geom_text(x=2, y=76, label='73')
+    + geom_text(x=1, y=94, label='91')
+    + geom_text(x=0, y=91, label='88')
+)
+```

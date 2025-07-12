@@ -1,10 +1,116 @@
 ---
-title: "about me"
-subtitle: "my data science portfolio"
-# use quarto markdown to 
+title: "Comparing Delay Types"
+subtitle: "Unit 3 Stretch"
+author: "Zach McLaughlin"
+format:
+  html:
+    self-contained: true
+    page-layout: full
+    title-block-banner: true
+    toc: true
+    toc-depth: 3
+    toc-location: body
+    number-sections: false
+    html-math-method: katex
+    code-fold: true
+    code-summary: "Show the code"
+    code-overflow: wrap
+    code-copy: hover
+    code-tools:
+        source: false
+        toggle: true
+        caption: See code
+execute: 
+  warning: false
+    
 ---
 
-# Title 1 Header
-## Title 2 Header
+```{python}
+import pandas as pd 
+import numpy as np
+import sqlite3
+from lets_plot import *
 
-[MarkDown Basics](https://quarto.org/docs/authoring/markdown-basics.html#links-images)
+LetsPlot.setup_html(isolated_frame=True)
+```
+
+
+```{python}
+df = pd.read_json("https://github.com/byuidatascience/data4missing/raw/master/data-raw/flights_missing/flights_missing.json")
+
+df
+```
+
+## QUESTION 1
+
+__Which delay is the worst delay? Build on the analysis you already did regarding Weahter Delay. This time though, instead of comparing one type of delay across multiple airports, we want to compare Weather Delay (an involved calculation that you already did in a previous task) with Carrier Delay and Security Delay (both of which are in the dataset and don’t need fancy calculations like Weather did). Compare the proportion of delay for each of the three categories in a Chart and a Table. Describe your results.__
+
+Here we can se that weather is the worst delay, with carrier behind it and security barely even an part of delays.
+
+```{python}
+missing_vals = ["", "n/a", -999]
+df = df.replace(missing_vals, np.nan)
+
+df['month'] = df['month'].ffill()
+df['year'] = df['year'].ffill()
+
+df["num_of_delays_carrier"] = df["num_of_delays_carrier"].replace("1500+", 1750)
+df["num_of_delays_carrier"] = pd.to_numeric(df["num_of_delays_carrier"])
+
+df['num_of_delays_late_aircraft'] = df['num_of_delays_late_aircraft'].fillna(df['num_of_delays_late_aircraft'].mean())
+
+month_map = {
+    'January': 1, 'February': 2, 'March': 3,
+    'April': 4, 'May': 5, 'June': 6,
+    'July': 7, 'August': 8, 'September': 9,
+    'October': 10, 'November': 11, 'December': 12
+}
+
+month_num = df['month'].map(month_map)
+
+df['nas_weather_fraction'] = np.where(month_num.between(4, 8), 0.40, 0.65)
+
+df['weather_delay_total'] = (
+    df['num_of_delays_weather'] +
+    0.30 * df['num_of_delays_late_aircraft'] +
+    df['num_of_delays_nas'] * df['nas_weather_fraction']
+)
+
+delays_df = df[["airport_code", "num_of_flights_total", "num_of_delays_carrier", "num_of_delays_security", "weather_delay_total"]].copy()
+delays_df = delays_df.rename(columns={
+    "num_of_delays_carrier": "Carrier",
+    "num_of_delays_security": "Security",
+    "weather_delay_total": "Weather"
+})
+
+long_df = pd.melt(delays_df,
+                  id_vars=["airport_code", "num_of_flights_total"],
+                  value_vars=["Carrier", "Security", "Weather"],
+                  var_name="DelayType",
+                  value_name="NumDelays")
+long_df["PropDelayed"] = long_df["NumDelays"] / long_df["num_of_flights_total"]
+
+display(long_df.groupby("DelayType")["PropDelayed"].mean().round(4))
+
+(
+ggplot(long_df, aes(x='DelayType', y='PropDelayed', fill='DelayType'))
+    +   geom_bar(stat='identity')
+    +   ggtitle("Proportion of Delays by Type Across All Airports")
+    +   ylab("Proportion of Flights Delayed")
+)
+```
+
+## QUESTION 2
+
+__Create another chart that shows the proportion of delays for each reason (Weather, Carrier, and Security) across all 7 airports. Describe your results.__
+
+Here is a graph that shows all the proportion that each delay happens acrros the 7 airports in the database.
+
+```{python}
+# Delay types per airport
+ggplot(long_df, aes(x='airport_code', y='PropDelayed', fill='DelayType')) + \
+    geom_bar(stat='identity', position='dodge') + \
+    ggtitle("Delay Proportions by Type and Airport") + \
+    xlab("Airport") + ylab("Proportion of Flights Delayed")
+
+```

@@ -1,7 +1,7 @@
 ---
-title: "Client Report - [Insert Project Title]"
-subtitle: "Course DS 250"
-author: "[STUDENT NAME]"
+title: "Client Report - Show me!"
+subtitle: "Unit 4 Task 3"
+author: "Zach McLaughlin"
 format:
   html:
     self-contained: true
@@ -25,4 +25,64 @@ execute:
     
 ---
 
-### Paste in a template
+```{python}
+import pandas as pd 
+import numpy as np
+from lets_plot import *
+# add the additional libraries you need to import for ML here
+
+LetsPlot.setup_html(isolated_frame=True)
+
+from sklearn.model_selection import train_test_split
+
+from sklearn.ensemble import RandomForestClassifier
+
+from sklearn.metrics import classification_report
+```
+
+
+```{python}
+df = pd.read_csv('https://raw.githubusercontent.com/byuidatascience/data4dwellings/master/data-raw/dwellings_ml/dwellings_ml.csv')
+
+df['arcstyle_ONE-STORY'] = df['arcstyle_ONE-STORY'].map({1: 'Yes', 0: 'No'})
+df['condition_Fair'] = df['condition_Fair'].map({1: 'Yes', 0: 'No'})
+```
+
+## QUESTION 1
+
+__Create 2-3 charts that evaluate the relationships between each of the top 2 or 3 most important variables (as found in Unit 4 Task 2) and the year the home was built.__ Describe what you learn from the charts about how that variable is related to year built.   
+
+From the first graph, we can see that it is a very strong indicator that a house was built after 1980 if it has more than 1 story. The second graph maps a trendline of the Living Area over time, you can see that the larger the living area, the more recent the home is built.
+
+```{python}
+graph1 = (
+           ggplot(data=df, mapping=aes(x='arcstyle_ONE-STORY', y='before1980', fill='arcstyle_ONE-STORY'))
+           + geom_bar()
+           + labs(title='Number of One Story Houses Before and After 1980', x='1 StoryHouse', y='Built Before 1980')
+         )
+
+display(graph1)
+
+graph2=(
+          ggplot(data=df, mapping=aes(x='yrbuilt', y='livearea', color='before1980'))
+          + geom_smooth(method='lm')
+          + labs(title='Average Living Area Over Time', x='Year', y='Living Area')
+        )
+
+display(graph2)
+```
+
+
+## QUESTION 2
+
+__Create at least one other chart to examine a variable(s) you thought might be important but apparently was not. The chart should show its relationship to the year built.__ Describe what you learn from the chart about how that variable is related to year built. Explain why you think it was not (very) important in the model.
+
+I was curiouse as to why houses with a Fair condition was the last out of all the houses on the feature importance list so below is a graph that displays the number of houses marked as having a fair condition. As you can see there is only 1 house in the entire dataset marked to have a condtition of Fair which makes sense that the dataset cannot make any prediction off of this because it only has 1 house in a different state to find a pattern from.
+
+```{python}
+(
+  ggplot(data=df, mapping=aes(x='condition_Fair', y='before1980'))
+  + geom_bar()
+  + labs(title='Number of Houses in Fair Condition vs Not', x='Year', y='Number of Houses')
+)
+```

@@ -1,7 +1,7 @@
 ---
-title: "Client Report - [Insert Project Title]"
-subtitle: "Course DS 250"
-author: "[STUDENT NAME]"
+title: "Client Report -How good is it, really?"
+subtitle: "Unit 4 Task 2"
+author: "Zach McLaughlin"
 format:
   html:
     self-contained: true
@@ -25,4 +25,80 @@ execute:
     
 ---
 
-### Paste in a template
+```{python}
+import pandas as pd 
+import numpy as np
+from lets_plot import *
+# add the additional libraries you need to import for ML here
+
+LetsPlot.setup_html(isolated_frame=True)
+
+from sklearn.model_selection import train_test_split
+
+from sklearn.ensemble import RandomForestClassifier
+
+from sklearn.metrics import classification_report
+```
+
+
+```{python}
+df = pd.read_csv('https://raw.githubusercontent.com/byuidatascience/data4dwellings/master/data-raw/dwellings_ml/dwellings_ml.csv')
+df
+
+X = df.drop(columns=['before1980', 'yrbuilt', 'parcel'])
+y = df.before1980
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)
+
+model = RandomForestClassifier()
+model.fit(X_train, y_train)
+
+pred = model.predict(X_test)
+```
+
+## QUESTION 1
+
+__Describe the quality of your classification model using 2-3 different evaluation metrics.__ You also need to explain how to interpret each of the evaluation metrics you use.  
+
+Below we can see the accuracy, precision, recall, as well as F1 score of our model. Accuracy is how often the predictions were correct, precision is how many of the predicted "yes" were actually a "yes", and recall is, of all the homes built before 1980, how many were correctly predicted. F1 score is a combination of precision and recall, making it a great option in many cases to see the true performance of your model.
+
+```{python}
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+
+accuracy = accuracy_score(y_test, pred)
+precision = precision_score(y_test, pred)
+recall = recall_score(y_test, pred)
+f1 = f1_score(y_test, pred)
+
+print(f"Accuracy: {accuracy:.3f}")
+print(f"Precision: {precision:.3f}")
+print(f"Recall: {recall:.3f}")
+print(f"F1 Score: {f1:.3f}")
+
+```
+
+
+## QUESTION 2
+
+__Justify your classification model by discussing the most important features selected by your model.__ This discussion should include a feature importance chart and a description of the features.
+
+In the chart below, you can see a chart that displays the top 10 most important features in order from most to least. Livearea is the number one feature used to calculate whether a house is built before 1980 or not.
+
+```{python}
+import matplotlib.pyplot as plt
+
+importances = model.feature_importances_
+features = X.columns
+feat_df = pd.DataFrame({'Feature': features, 'Importance': importances})
+feat_df = feat_df.sort_values('Importance', ascending=False)
+
+# Plot
+plt.figure(figsize=(10, 6))
+plt.barh(feat_df['Feature'][:10][::-1], feat_df['Importance'][:10][::-1])
+plt.xlabel("Feature Importance")
+plt.title("Top 10 Important Features")
+plt.tight_layout()
+plt.show()
+
+
+```

@@ -1,7 +1,7 @@
 ---
-title: "Client Report - [Insert Project Title]"
-subtitle: "Course DS 250"
-author: "[STUDENT NAME]"
+title: "Client Report - Missing Data and JSON"
+subtitle: "Unit 3 Task 1"
+author: "Zach McLaughlin"
 format:
   html:
     self-contained: true
@@ -25,4 +25,55 @@ execute:
     
 ---
 
-### Paste in a template
+```{python}
+import pandas as pd 
+import numpy as np
+import sqlite3
+from lets_plot import *
+
+LetsPlot.setup_html(isolated_frame=True)
+```
+
+
+```{python}
+# Learn morea about Code Cells: https://quarto.org/docs/reference/cells/cells-jupyter.html
+
+# Include and execute your code here
+df = pd.read_json("https://github.com/byuidatascience/data4missing/raw/master/data-raw/flights_missing/flights_missing.json")
+
+df
+```
+
+## QUESTION 1
+
+__Fix all of the varied missing data types in the data to be consistent: use np.nan to represent missing value.__ In your report include one record example (one row) from your clean data, in the raw JSON format. Your example should display at least one missing value so that we can verify it was done correctly. (Note: JSON will convert NaN's to "null"). Describe your process for finding values that needed to be changed, and how you changed them.__ 
+
+I started by replacing all of the missing values with the correct np.nan so that they would all be found correctly by fillna. I then replaced missing airport names with the airports code, and used forward fill on month and years column. For the delays due to late air craft i was able to calculate it with the num_of_delays_total due to it being the only one with missing value out of all of the counting cause of delay related column. Finally i simply calculated the average of the minutes delays columns and filled missing values with that die to so many columns with missing values.
+
+```{python}
+# cleans all missing values to be updated later
+missing_values = ["", 'n/a', -999]
+df_cleaned = df.replace(missing_values, np.nan)
+
+# replace data
+df_cleaned['airport_name'] = df_cleaned['airport_name'].fillna(df_cleaned['airport_code'])
+df_cleaned['month'] = df_cleaned['month'].ffill()
+df_cleaned['year'] = df_cleaned['year'].ffill()
+
+# guesses the number of delays due to late aircraft through math on other columns
+delays_carrier = df_cleaned['num_of_delays_carrier']
+delays_carrier = pd.to_numeric(df_cleaned['num_of_delays_carrier'].replace('1500+', 1500))
+df_cleaned['num_of_delays_late_aircraft'] = df_cleaned['num_of_delays_total'] - df_cleaned['num_of_delays_weather'] - df_cleaned['num_of_delays_security'] - df_cleaned['num_of_delays_nas'] - delays_carrier
+
+df_cleaned['minutes_delayed_carrier'] = df_cleaned['minutes_delayed_carrier'].fillna(df_cleaned['minutes_delayed_carrier'].mean())
+df_cleaned['minutes_delayed_nas'] = df_cleaned['minutes_delayed_nas'].fillna(df_cleaned['minutes_delayed_nas'].mean())
+df_cleaned['minutes_delayed_security'] = df_cleaned['minutes_delayed_security'].fillna(df_cleaned['minutes_delayed_security'].mean())
+df_cleaned
+```
+
+Below from line 7, you can see that the 7th row had -999 for the number of delays due to late air craft and the cleaned df fixes this.
+
+```{python}
+print(f'Origional Data on  row:\n{df.iloc[7]}')
+print(f'Cleaned Data on  row{df_cleaned.iloc[7]}')
+```

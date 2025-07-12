@@ -1,7 +1,7 @@
 ---
-title: "Client Report - [Insert Project Title]"
-subtitle: "Course DS 250"
-author: "[STUDENT NAME]"
+title: "Client Report - Longevity of Baseball Players"
+subtitle: "Unit 2 Task 3"
+author: "Zach McLaughlin"
 format:
   html:
     self-contained: true
@@ -25,4 +25,72 @@ execute:
     
 ---
 
-### Paste in a template
+```{python}
+import pandas as pd 
+import numpy as np
+import sqlite3
+from lets_plot import *
+
+LetsPlot.setup_html(isolated_frame=True)
+```
+
+
+```{python}
+# Learn morea about Code Cells: https://quarto.org/docs/reference/cells/cells-jupyter.html
+
+# Include and execute your code here
+sqlite_file = 'lahmansbaseballdb.sqlite'
+# this file must be in the same location as your .qmd or .py file
+con = sqlite3.connect(sqlite_file)
+```
+
+## QUESTION 1
+
+__Calculate the average career length for players who have played at least 10 games in their career. Use years as the unit of measure.__
+
+Here the table is formated so you are able ot see the the average career length is 6.8 years.
+
+```{python}
+q = '''
+SELECT ROUND(AVG(career_length), 3) AS `Average career length`
+  FROM (
+    SELECT
+      playerID,
+      (MAX(yearID) - MIN(yearID) + 1) AS career_length
+    FROM appearances
+    GROUP BY playerID
+    HAVING SUM(G_all) >= 10
+)
+'''
+results = pd.read_sql_query(q, con)
+results
+```
+
+
+## QUESTION 2
+
+1. Identify the top 10 players with the longest careers (based on the number of years they played). Include their:
+
+    - playerID
+    - first_name
+    - last_name
+    - career_length
+
+This is a table showing the players that have the largest span of time between the first game and their final game not showing players with the most seasons played.
+
+```{python}
+q = '''
+    SELECT
+      playerID,
+      nameFirst,
+      nameLast,
+      ROUND((julianday(finalGame) - julianday(debut) + 1) / 365.25, 3) AS   career_length_years
+    FROM people
+    ORDER BY career_length_years DESC
+    LIMIT 10;
+    '''
+results = pd.read_sql_query(q, con)
+results
+```
+
+

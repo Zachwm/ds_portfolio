@@ -22,9 +22,31 @@
   {
     "objectID": "Story_Telling/project2.html",
     "href": "Story_Telling/project2.html",
-    "title": "Client Report - [Insert Project Title]",
+    "title": "Client Report - What’s in a Name?",
     "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "text": "Show the code\nimport pandas as pd\nimport numpy as np\nfrom lets_plot import *\n\nLetsPlot.setup_html(isolated_frame=True)\nShow the code\n# Learn morea about Code Cells: https://quarto.org/docs/reference/cells/cells-jupyter.html\n\n# Include and execute your code here\ndf = pd.read_csv(\"https://github.com/byuidatascience/data4names/raw/master/data-raw/names_year/names_year.csv\")",
+    "crumbs": [
+      "Story Telling",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "Story_Telling/project2.html#question-1",
+    "href": "Story_Telling/project2.html#question-1",
+    "title": "Client Report - What’s in a Name?",
+    "section": "QUESTION 1",
+    "text": "QUESTION 1\n\nHow does your name at your birth year compare to its use historically? Your must provide a chart. The years labels on your charts should not include a comma.\nMy name spiked in the 90s and was becoming less common when i was born\n\n\nShow the code\n# Q1\nname_hist = df.query(\"name == 'Zachary' and year &lt;= 2003\")\n\n(\n  ggplot(data = name_hist,\n  mapping = aes(x = 'year', y = 'Total'))\n    + geom_line()\n    + scale_x_continuous(format = '0')\n)",
+    "crumbs": [
+      "Story Telling",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "Story_Telling/project2.html#question-2",
+    "href": "Story_Telling/project2.html#question-2",
+    "title": "Client Report - What’s in a Name?",
+    "section": "QUESTION 2",
+    "text": "QUESTION 2\nIf you talked to someone named Brittany on the phone, what is your guess of his or her age? What ages would you not guess? Try to justify your answer with whatever statistics knowledge you have. You must provide a chart. The years labels on your charts should not include a comma.\nI think brittany is a name that was probably most common around the 80s making people with name around 45 years old today. After graphing, you can see that the name reached a peak popularity in the year 1990 so i was close with Brittanys today being most commonly 35 years old.\n\n\nShow the code\n# Q2\n\nname_hist = df.query(\"name == 'Brittany'\")\n\n(\n  ggplot(data = name_hist,\n  mapping = aes(x = 'year', y = 'Total'))\n    + geom_line()\n    + scale_x_continuous(format = '0')\n    +   geom_text(x = 1980, y = 30000, label = 'The name Brittany peaked')\n)",
     "crumbs": [
       "Story Telling",
       "Project 2"
@@ -33,51 +55,73 @@
   {
     "objectID": "resume.html",
     "href": "resume.html",
-    "title": "Isaac Newtons’s CV",
+    "title": "Zach McLaughlin’s CV",
     "section": "",
-    "text": "Physicist, Mathematician, Cambridge professor.\n\nisaac@applesdofall.org | My wikipedia page\n\n\n\nStanding on the shoulders of giants\n\n\nLaws of motion, gravitation, minting coins, disliking Robert Hooke\n\n\n\nCooling, power series, optics, alchemy, planetary motions, apples.\n\n\n\n\n1654-1660 The King’s School, Grantham.\nJune 1661 - now Trinity College, Cambridge\n\nSizar\n\n1667 - death Trinity College, Cambridge\n\nFellow\n\n\n\n\n2012 President, Royal Society, London, UK\nAssociate, French Academy of Science, Paris, France\n\n\n\n\n\n\n1669 Newton Sir I, De analysi per æquationes numero terminorum infinitas.\n1669 Lectiones opticæ.\netc. etc. etc.\n\n\n\n2012 Infinitesimal calculus for solutions to physics problems, SMBC patent 001\n\n\n\n\n1600 Royal Mint, London\n\nWarden\nMinted coins\n\n1600 Lucasian professor of Mathematics, Cambridge University"
-  },
-  {
-    "objectID": "resume.html#currently",
-    "href": "resume.html#currently",
-    "title": "Isaac Newtons’s CV",
-    "section": "",
-    "text": "Standing on the shoulders of giants\n\n\nLaws of motion, gravitation, minting coins, disliking Robert Hooke\n\n\n\nCooling, power series, optics, alchemy, planetary motions, apples."
+    "text": "Computer Science Student\n\nzwmclaughlin@gmail.com | (346)-220-7787 | LinkedIn | GitHub\n\n\n\nExpected August 2026\nBrigham Young University - Idaho, Rexburg, Idaho\nBachelor of Science in Computer Science\n- Concentrations: Software Development, Algorithms & Data Structures, Programming Principles, Databases\n- Relevant Coursework: Data Structures, Parallelism & Concurrency, Algorithms, Discrete Mathematics, Cybersecurity, OOP, Linear Algebra, Linux, Data Science, Machine Learning\n\n\n\nLanguages: Python, C#, SQL, HTML/CSS\nFrameworks: Django, Firebase\nTools: Git, MySQL, VS Code, Tkinter, Pandas, NumPy\n\n\n\nJul 2024 – Oct 2024\nTag-N-Go Car Wash, Rexburg, Idaho\nSales and Service Associate\n- Strategized with team to meet sales goals and increase membership enrollment.\n- Operated and maintained car wash facilities; handled high daily volume.\nJun 2022 – Sep 2022\nRegal Cinemas, Houston, Texas\nCashier, Ticket Assistant, Usher\n- Processed transactions and assisted customers at the front register.\n- Guided guests to theaters and ensured smooth operations.\nJul 2021 – Dec 2021\nCopper Tree Tech, Houston, Texas\nWorksite Helper\n- Supported technicians on audio, video, lighting, and automation projects.\n- Assisted with equipment setup, measurements, and material prep.\n\n\n\nOct 2024\nCar Maintenance App, Rexburg, Idaho\n- Built a Django + Firebase web app to manage car maintenance schedules.\n- Implemented secure user login with Firebase Authentication.\nJuly 2023\nDisease Simulator, Rexburg, Idaho\n- Developed an interactive Python/Tkinter simulator to model disease spread with adjustable parameters.\n\n\n\nAug 2017 – Dec 2017\nEagle Scout Project, Houston, Texas\nProject Organizer\n- Led a donation drive providing clothing and supplies to human trafficking survivors.\n- Coordinated drop-off boxes and community outreach.\nMay 2025 – Present\nComputing Society, Rexburg, Idaho\nMember\n- Participate in workshops and discussions on new technologies and career prep."
   },
   {
     "objectID": "resume.html#education",
     "href": "resume.html#education",
-    "title": "Isaac Newtons’s CV",
+    "title": "Zach McLaughlin’s CV",
     "section": "",
-    "text": "1654-1660 The King’s School, Grantham.\nJune 1661 - now Trinity College, Cambridge\n\nSizar\n\n1667 - death Trinity College, Cambridge\n\nFellow"
+    "text": "Expected August 2026\nBrigham Young University - Idaho, Rexburg, Idaho\nBachelor of Science in Computer Science\n- Concentrations: Software Development, Algorithms & Data Structures, Programming Principles, Databases\n- Relevant Coursework: Data Structures, Parallelism & Concurrency, Algorithms, Discrete Mathematics, Cybersecurity, OOP, Linear Algebra, Linux, Data Science, Machine Learning"
   },
   {
-    "objectID": "resume.html#awards",
-    "href": "resume.html#awards",
-    "title": "Isaac Newtons’s CV",
+    "objectID": "resume.html#skills",
+    "href": "resume.html#skills",
+    "title": "Zach McLaughlin’s CV",
     "section": "",
-    "text": "2012 President, Royal Society, London, UK\nAssociate, French Academy of Science, Paris, France"
+    "text": "Languages: Python, C#, SQL, HTML/CSS\nFrameworks: Django, Firebase\nTools: Git, MySQL, VS Code, Tkinter, Pandas, NumPy"
   },
   {
-    "objectID": "resume.html#publications",
-    "href": "resume.html#publications",
-    "title": "Isaac Newtons’s CV",
+    "objectID": "resume.html#experience",
+    "href": "resume.html#experience",
+    "title": "Zach McLaughlin’s CV",
     "section": "",
-    "text": "1669 Newton Sir I, De analysi per æquationes numero terminorum infinitas.\n1669 Lectiones opticæ.\netc. etc. etc.\n\n\n\n2012 Infinitesimal calculus for solutions to physics problems, SMBC patent 001"
+    "text": "Jul 2024 – Oct 2024\nTag-N-Go Car Wash, Rexburg, Idaho\nSales and Service Associate\n- Strategized with team to meet sales goals and increase membership enrollment.\n- Operated and maintained car wash facilities; handled high daily volume.\nJun 2022 – Sep 2022\nRegal Cinemas, Houston, Texas\nCashier, Ticket Assistant, Usher\n- Processed transactions and assisted customers at the front register.\n- Guided guests to theaters and ensured smooth operations.\nJul 2021 – Dec 2021\nCopper Tree Tech, Houston, Texas\nWorksite Helper\n- Supported technicians on audio, video, lighting, and automation projects.\n- Assisted with equipment setup, measurements, and material prep."
   },
   {
-    "objectID": "resume.html#occupation",
-    "href": "resume.html#occupation",
-    "title": "Isaac Newtons’s CV",
+    "objectID": "resume.html#projects",
+    "href": "resume.html#projects",
+    "title": "Zach McLaughlin’s CV",
     "section": "",
-    "text": "1600 Royal Mint, London\n\nWarden\nMinted coins\n\n1600 Lucasian professor of Mathematics, Cambridge University"
+    "text": "Oct 2024\nCar Maintenance App, Rexburg, Idaho\n- Built a Django + Firebase web app to manage car maintenance schedules.\n- Implemented secure user login with Firebase Authentication.\nJuly 2023\nDisease Simulator, Rexburg, Idaho\n- Developed an interactive Python/Tkinter simulator to model disease spread with adjustable parameters."
+  },
+  {
+    "objectID": "resume.html#activities-and-leadership",
+    "href": "resume.html#activities-and-leadership",
+    "title": "Zach McLaughlin’s CV",
+    "section": "",
+    "text": "Aug 2017 – Dec 2017\nEagle Scout Project, Houston, Texas\nProject Organizer\n- Led a donation drive providing clothing and supplies to human trafficking survivors.\n- Coordinated drop-off boxes and community outreach.\nMay 2025 – Present\nComputing Society, Rexburg, Idaho\nMember\n- Participate in workshops and discussions on new technologies and career prep."
   },
   {
     "objectID": "Machine_Learning/project3.html",
     "href": "Machine_Learning/project3.html",
-    "title": "Client Report - [Insert Project Title]",
+    "title": "Client Report - Show me!",
     "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "text": "Show the code\nimport pandas as pd \nimport numpy as np\nfrom lets_plot import *\n# add the additional libraries you need to import for ML here\n\nLetsPlot.setup_html(isolated_frame=True)\n\nfrom sklearn.model_selection import train_test_split\n\nfrom sklearn.ensemble import RandomForestClassifier\n\nfrom sklearn.metrics import classification_report\nShow the code\ndf = pd.read_csv('https://raw.githubusercontent.com/byuidatascience/data4dwellings/master/data-raw/dwellings_ml/dwellings_ml.csv')\n\ndf['arcstyle_ONE-STORY'] = df['arcstyle_ONE-STORY'].map({1: 'Yes', 0: 'No'})\ndf['condition_Fair'] = df['condition_Fair'].map({1: 'Yes', 0: 'No'})",
+    "crumbs": [
+      "Machine Learning",
+      "Project 3"
+    ]
+  },
+  {
+    "objectID": "Machine_Learning/project3.html#question-1",
+    "href": "Machine_Learning/project3.html#question-1",
+    "title": "Client Report - Show me!",
+    "section": "QUESTION 1",
+    "text": "QUESTION 1\nCreate 2-3 charts that evaluate the relationships between each of the top 2 or 3 most important variables (as found in Unit 4 Task 2) and the year the home was built. Describe what you learn from the charts about how that variable is related to year built.\nFrom the first graph, we can see that it is a very strong indicator that a house was built after 1980 if it has more than 1 story. The second graph maps a trendline of the Living Area over time, you can see that the larger the living area, the more recent the home is built.\n\n\nShow the code\ngraph1 = (\n           ggplot(data=df, mapping=aes(x='arcstyle_ONE-STORY', y='before1980', fill='arcstyle_ONE-STORY'))\n           + geom_bar()\n           + labs(title='Number of One Story Houses Before and After 1980', x='1 StoryHouse', y='Built Before 1980')\n         )\n\ndisplay(graph1)\n\ngraph2=(\n          ggplot(data=df, mapping=aes(x='yrbuilt', y='livearea', color='before1980'))\n          + geom_smooth(method='lm')\n          + labs(title='Average Living Area Over Time', x='Year', y='Living Area')\n        )\n\ndisplay(graph2)",
+    "crumbs": [
+      "Machine Learning",
+      "Project 3"
+    ]
+  },
+  {
+    "objectID": "Machine_Learning/project3.html#question-2",
+    "href": "Machine_Learning/project3.html#question-2",
+    "title": "Client Report - Show me!",
+    "section": "QUESTION 2",
+    "text": "QUESTION 2\nCreate at least one other chart to examine a variable(s) you thought might be important but apparently was not. The chart should show its relationship to the year built. Describe what you learn from the chart about how that variable is related to year built. Explain why you think it was not (very) important in the model.\nI was curiouse as to why houses with a Fair condition was the last out of all the houses on the feature importance list so below is a graph that displays the number of houses marked as having a fair condition. As you can see there is only 1 house in the entire dataset marked to have a condtition of Fair which makes sense that the dataset cannot make any prediction off of this because it only has 1 house in a different state to find a pattern from.\n\n\nShow the code\n(\n  ggplot(data=df, mapping=aes(x='condition_Fair', y='before1980'))\n  + geom_bar()\n  + labs(title='Number of Houses in Fair Condition vs Not', x='Year', y='Number of Houses')\n)",
     "crumbs": [
       "Machine Learning",
       "Project 3"
@@ -86,9 +130,20 @@
   {
     "objectID": "Machine_Learning/project1.html",
     "href": "Machine_Learning/project1.html",
-    "title": "Client Report - [Insert Project Title]",
+    "title": "Client Report - Can You Predict That?",
     "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "text": "Show the code\nimport pandas as pd \nimport numpy as np\nfrom lets_plot import *\n# add the additional libraries you need to import for ML here\n\nLetsPlot.setup_html(isolated_frame=True)\n\nfrom sklearn.model_selection import train_test_split\n\nfrom sklearn.ensemble import RandomForestClassifier\n\nfrom sklearn.metrics import classification_report\nShow the code\n# import your data here using pandas and the URL\ndf = pd.read_csv('https://raw.githubusercontent.com/byuidatascience/data4dwellings/master/data-raw/dwellings_ml/dwellings_ml.csv')",
+    "crumbs": [
+      "Machine Learning",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Machine_Learning/project1.html#question",
+    "href": "Machine_Learning/project1.html#question",
+    "title": "Client Report - Can You Predict That?",
+    "section": "QUESTION",
+    "text": "QUESTION\nBuild a classification model labeling houses as being built “before 1980” or “during or after 1980”. Your goal is to reach or exceed 90% accuracy. Report your final model choice and any other model parameters you may have tweaked (train-test split ratio, tuning parameters, etc).\nI chose to use random forest because it had marginally better performance regarding the average f1 score.\n\n\nShow the code\n# Include and execute your code here\nX = df.drop(columns=['before1980', 'yrbuilt', 'parcel'])\ny = df.before1980\n\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)\n\nmodel = RandomForestClassifier()\nmodel.fit(X_train, y_train)\n\npred = model.predict(X_test)\n\nprint(classification_report(y_test, pred))\n\n\n              precision    recall  f1-score   support\n\n           0       0.91      0.89      0.90      1727\n           1       0.93      0.94      0.94      2856\n\n    accuracy                           0.92      4583\n   macro avg       0.92      0.92      0.92      4583\nweighted avg       0.92      0.92      0.92      4583",
     "crumbs": [
       "Machine Learning",
       "Project 1"
@@ -97,19 +152,39 @@
   {
     "objectID": "full_stack.html",
     "href": "full_stack.html",
-    "title": "about me",
+    "title": "To Infinity and Beyond…wait wrong movie",
     "section": "",
-    "text": "MarkDown Basics",
+    "text": "Build a machine learning model that predicts whether a person makes at least $50k with accuracy of at least 65%. Describe your model and report the accuracy.\nI was able to use a gradient boosting classifier to predict from the organized data wether a person makes above 50k with an accuracy of 68%. I cleaned up alot of the data converting it with one hot encoding and filling the many missing inputs allowing the model to make better precictions. In the end i was just short so i went through different random states in my train test split and that put me just over the edge to meet the 65% requirement.\n\n\nShow the code\nimport pandas as pd\nimport numpy as np\nfrom sklearn.preprocessing import OneHotEncoder\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.ensemble import GradientBoostingClassifier\nfrom sklearn.metrics import accuracy_score, classification_report\n\ndf = pd.read_csv('StarWars.csv', encoding='ISO-8859-1')\n\ncol_rename = {\n  'RespondentID': 'id',\n  'Have you seen any of the 6 films in the Star Wars franchise?': 'seen_sw',\n  'Do you consider yourself to be a fan of the Star Wars film franchise?': 'fan_sw',\n  'Which of the following Star Wars films have you seen? Please select all that apply.': 'seen_1',\n  'Unnamed: 4': 'seen_2',\n  'Unnamed: 5': 'seen_3',\n  'Unnamed: 6': 'seen_4',\n  'Unnamed: 7': 'seen_5',\n  'Unnamed: 8': 'seen_6',\n  'Please rank the Star Wars films in order of preference with 1 being your favorite film in the franchise and 6 being your least favorite film.': 'rank_1',\n  'Unnamed: 10': 'rank_2',\n  'Unnamed: 11': 'rank_3',\n  'Unnamed: 12': 'rank_4',\n  'Unnamed: 13': 'rank_5',\n  'Unnamed: 14': 'rank_6',\n  'Please state whether you view the following characters favorably, unfavorably, or are unfamiliar with him/her.': 'HanSolo_rank',\n  'Unnamed: 16': 'LukeSkywalker_rank',\n  'Unnamed: 17': 'PrincessLeia_rank',\n  'Unnamed: 18': 'AnakinSkywalker_rank',\n  'Unnamed: 19': 'ObiWan_rank',\n  'Unnamed: 20': 'EmperorPalpatine_rank',\n  'Unnamed: 21': 'DarthVader_rank',\n  'Unnamed: 22': 'LandoCalrissian_rank',\n  'Unnamed: 23': 'BobaFett_rank',\n  'Unnamed: 24': 'C-3P0_rank',\n  'Unnamed: 25': 'R2D2_rank',\n  'Unnamed: 26': 'JarJar_rank',\n  'Unnamed: 27': 'PadmeAmidala_rank',\n  'Unnamed: 28': 'Yoda_rank',\n  'Which character shot first?': 'character_shot_first',\n  'Are you familiar with the Expanded Universe?': 'know_expanded',\n  'Do you consider yourself to be a fan of the Expanded Universe?ï¿½ï¿½': 'fan_of_expanded',\n  'Do you consider yourself to be a fan of the Star Trek franchise?': 'st_fan',\n  'Gender': 'gender',\n  'Age': 'age',\n  'Household Income': 'house_income',\n  'Education': 'education',\n  'Location (Census Region)': 'census_location'\n}\n\ndf.rename(columns=col_rename, inplace=True)\ndf.drop(index=0, inplace=True)\n\nfor col in ['seen_1', 'seen_2', 'seen_3', 'seen_4', 'seen_5', 'seen_6']:\n    df[col] = df[col].apply(lambda x: 1 if not pd.isna(x) else 0)\n\nage_map = {\n    '18-29': 23.5,\n    '30-44': 37,\n    '45-60': 52.5,\n    '&gt; 60': 65\n}\ndf['age_num'] = df['age'].map(age_map)\ndf.drop(columns='age', inplace=True)\n\neducation_map = {\n    'Less than high school degree': 0,\n    'High school degree': 1,\n    'Some college or Associate degree': 2,\n    'Bachelor degree': 3,\n    'Graduate degree': 4\n}\ndf['education_num'] = df['education'].map(education_map)\ndf.drop(columns='education', inplace=True)\n\nincome_map = {\n    '$0 - $24,999': 12500,\n    '$25,000 - $49,999': 37500,\n    '$50,000 - $99,999': 75000,\n    '$100,000 - $149,999': 125000,\n    '$150,000+': 175000\n}\ndf['income_num'] = df['house_income'].map(income_map)\ndf.drop(columns='house_income', inplace=True)\n\ndf['target'] = df['income_num'].apply(lambda x: 1 if x &gt;= 50000 else 0)\n\nfavor_map = {\n    'Very favorably': 2,\n    'Somewhat favorably': 1,\n    'Unfamiliar (N/A)': 0,\n    'Neither favorably nor unfavorably (neutral)': 0,\n    'Somewhat unfavorably': -1,\n    'Very unfavorably': -2,\n    np.nan: 0\n}\n\nfavor_cols = [col for col in df.columns if '_rank' in col]\nfor col in favor_cols:\n    df[col.replace('_rank', '_score')] = df[col].map(favor_map)\n\ndf.drop(columns=favor_cols, inplace=True)\n\nnum_cols = ['age_num', 'education_num', 'income_num'] + [f'rank_{i}' for i in range(1,7)]\ndf[num_cols] = df[num_cols].apply(pd.to_numeric, errors='coerce')\ndf[num_cols] = df[num_cols].fillna(df[num_cols].median())\n\ncat_cols = ['seen_sw', 'fan_sw', 'character_shot_first', 'know_expanded', 'fan_of_expanded', 'st_fan', 'gender', 'census_location']\nfor col in cat_cols:\n    if col in df.columns:\n        df[col] = df[col].fillna('Missing')\n\ncat_cols = ['seen_sw', 'fan_sw', 'character_shot_first', 'know_expanded', 'fan_of_expanded', 'st_fan', 'gender', 'census_location']\n\nencoder = OneHotEncoder(drop='first', dtype=int, sparse_output=False)\nencoded_array = encoder.fit_transform(df[cat_cols])\n\nencoded_df = pd.DataFrame(\n    encoded_array,\n    columns=encoder.get_feature_names_out(cat_cols),\n    index=df.index\n)\n\ndf.drop(columns=cat_cols, inplace=True)\n\ndf = pd.concat([df, encoded_df], axis=1)\n\nfor col in [f'rank_{i}' for i in range(1,7)]:\n    df[col] = df[col].astype(int)\ndf['education_num'] = df['education_num'].astype(int)\ndf['age_num'] = df['age_num'].astype(int)\n\ndf.drop(columns='id', inplace=True)\n\nX = df.drop(columns=['target', 'income_num'])\ny = df['target']\n\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=6)\n\nmodel = GradientBoostingClassifier()\nmodel.fit(X_train, y_train)\n\ny_pred = model.predict(X_test)\n\nprint(classification_report(y_test, y_pred))\n\n\n              precision    recall  f1-score   support\n\n           0       0.76      0.66      0.71       140\n           1       0.59      0.69      0.64        98\n\n    accuracy                           0.68       238\n   macro avg       0.67      0.68      0.67       238\nweighted avg       0.69      0.68      0.68       238",
     "crumbs": [
       "Full Stack"
     ]
   },
   {
-    "objectID": "full_stack.html#title-2-header",
-    "href": "full_stack.html#title-2-header",
-    "title": "about me",
+    "objectID": "full_stack.html#question-1",
+    "href": "full_stack.html#question-1",
+    "title": "To Infinity and Beyond…wait wrong movie",
     "section": "",
-    "text": "MarkDown Basics",
+    "text": "Build a machine learning model that predicts whether a person makes at least $50k with accuracy of at least 65%. Describe your model and report the accuracy.\nI was able to use a gradient boosting classifier to predict from the organized data wether a person makes above 50k with an accuracy of 68%. I cleaned up alot of the data converting it with one hot encoding and filling the many missing inputs allowing the model to make better precictions. In the end i was just short so i went through different random states in my train test split and that put me just over the edge to meet the 65% requirement.\n\n\nShow the code\nimport pandas as pd\nimport numpy as np\nfrom sklearn.preprocessing import OneHotEncoder\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.ensemble import GradientBoostingClassifier\nfrom sklearn.metrics import accuracy_score, classification_report\n\ndf = pd.read_csv('StarWars.csv', encoding='ISO-8859-1')\n\ncol_rename = {\n  'RespondentID': 'id',\n  'Have you seen any of the 6 films in the Star Wars franchise?': 'seen_sw',\n  'Do you consider yourself to be a fan of the Star Wars film franchise?': 'fan_sw',\n  'Which of the following Star Wars films have you seen? Please select all that apply.': 'seen_1',\n  'Unnamed: 4': 'seen_2',\n  'Unnamed: 5': 'seen_3',\n  'Unnamed: 6': 'seen_4',\n  'Unnamed: 7': 'seen_5',\n  'Unnamed: 8': 'seen_6',\n  'Please rank the Star Wars films in order of preference with 1 being your favorite film in the franchise and 6 being your least favorite film.': 'rank_1',\n  'Unnamed: 10': 'rank_2',\n  'Unnamed: 11': 'rank_3',\n  'Unnamed: 12': 'rank_4',\n  'Unnamed: 13': 'rank_5',\n  'Unnamed: 14': 'rank_6',\n  'Please state whether you view the following characters favorably, unfavorably, or are unfamiliar with him/her.': 'HanSolo_rank',\n  'Unnamed: 16': 'LukeSkywalker_rank',\n  'Unnamed: 17': 'PrincessLeia_rank',\n  'Unnamed: 18': 'AnakinSkywalker_rank',\n  'Unnamed: 19': 'ObiWan_rank',\n  'Unnamed: 20': 'EmperorPalpatine_rank',\n  'Unnamed: 21': 'DarthVader_rank',\n  'Unnamed: 22': 'LandoCalrissian_rank',\n  'Unnamed: 23': 'BobaFett_rank',\n  'Unnamed: 24': 'C-3P0_rank',\n  'Unnamed: 25': 'R2D2_rank',\n  'Unnamed: 26': 'JarJar_rank',\n  'Unnamed: 27': 'PadmeAmidala_rank',\n  'Unnamed: 28': 'Yoda_rank',\n  'Which character shot first?': 'character_shot_first',\n  'Are you familiar with the Expanded Universe?': 'know_expanded',\n  'Do you consider yourself to be a fan of the Expanded Universe?ï¿½ï¿½': 'fan_of_expanded',\n  'Do you consider yourself to be a fan of the Star Trek franchise?': 'st_fan',\n  'Gender': 'gender',\n  'Age': 'age',\n  'Household Income': 'house_income',\n  'Education': 'education',\n  'Location (Census Region)': 'census_location'\n}\n\ndf.rename(columns=col_rename, inplace=True)\ndf.drop(index=0, inplace=True)\n\nfor col in ['seen_1', 'seen_2', 'seen_3', 'seen_4', 'seen_5', 'seen_6']:\n    df[col] = df[col].apply(lambda x: 1 if not pd.isna(x) else 0)\n\nage_map = {\n    '18-29': 23.5,\n    '30-44': 37,\n    '45-60': 52.5,\n    '&gt; 60': 65\n}\ndf['age_num'] = df['age'].map(age_map)\ndf.drop(columns='age', inplace=True)\n\neducation_map = {\n    'Less than high school degree': 0,\n    'High school degree': 1,\n    'Some college or Associate degree': 2,\n    'Bachelor degree': 3,\n    'Graduate degree': 4\n}\ndf['education_num'] = df['education'].map(education_map)\ndf.drop(columns='education', inplace=True)\n\nincome_map = {\n    '$0 - $24,999': 12500,\n    '$25,000 - $49,999': 37500,\n    '$50,000 - $99,999': 75000,\n    '$100,000 - $149,999': 125000,\n    '$150,000+': 175000\n}\ndf['income_num'] = df['house_income'].map(income_map)\ndf.drop(columns='house_income', inplace=True)\n\ndf['target'] = df['income_num'].apply(lambda x: 1 if x &gt;= 50000 else 0)\n\nfavor_map = {\n    'Very favorably': 2,\n    'Somewhat favorably': 1,\n    'Unfamiliar (N/A)': 0,\n    'Neither favorably nor unfavorably (neutral)': 0,\n    'Somewhat unfavorably': -1,\n    'Very unfavorably': -2,\n    np.nan: 0\n}\n\nfavor_cols = [col for col in df.columns if '_rank' in col]\nfor col in favor_cols:\n    df[col.replace('_rank', '_score')] = df[col].map(favor_map)\n\ndf.drop(columns=favor_cols, inplace=True)\n\nnum_cols = ['age_num', 'education_num', 'income_num'] + [f'rank_{i}' for i in range(1,7)]\ndf[num_cols] = df[num_cols].apply(pd.to_numeric, errors='coerce')\ndf[num_cols] = df[num_cols].fillna(df[num_cols].median())\n\ncat_cols = ['seen_sw', 'fan_sw', 'character_shot_first', 'know_expanded', 'fan_of_expanded', 'st_fan', 'gender', 'census_location']\nfor col in cat_cols:\n    if col in df.columns:\n        df[col] = df[col].fillna('Missing')\n\ncat_cols = ['seen_sw', 'fan_sw', 'character_shot_first', 'know_expanded', 'fan_of_expanded', 'st_fan', 'gender', 'census_location']\n\nencoder = OneHotEncoder(drop='first', dtype=int, sparse_output=False)\nencoded_array = encoder.fit_transform(df[cat_cols])\n\nencoded_df = pd.DataFrame(\n    encoded_array,\n    columns=encoder.get_feature_names_out(cat_cols),\n    index=df.index\n)\n\ndf.drop(columns=cat_cols, inplace=True)\n\ndf = pd.concat([df, encoded_df], axis=1)\n\nfor col in [f'rank_{i}' for i in range(1,7)]:\n    df[col] = df[col].astype(int)\ndf['education_num'] = df['education_num'].astype(int)\ndf['age_num'] = df['age_num'].astype(int)\n\ndf.drop(columns='id', inplace=True)\n\nX = df.drop(columns=['target', 'income_num'])\ny = df['target']\n\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=6)\n\nmodel = GradientBoostingClassifier()\nmodel.fit(X_train, y_train)\n\ny_pred = model.predict(X_test)\n\nprint(classification_report(y_test, y_pred))\n\n\n              precision    recall  f1-score   support\n\n           0       0.76      0.66      0.71       140\n           1       0.59      0.69      0.64        98\n\n    accuracy                           0.68       238\n   macro avg       0.67      0.68      0.67       238\nweighted avg       0.69      0.68      0.68       238",
+    "crumbs": [
+      "Full Stack"
+    ]
+  },
+  {
+    "objectID": "full_stack.html#question-2",
+    "href": "full_stack.html#question-2",
+    "title": "To Infinity and Beyond…wait wrong movie",
+    "section": "QUESTION 2",
+    "text": "QUESTION 2\nValidate the data provided on GitHub lines up with the article by recreating a 3rd visual from the article.\nBelow you can see a graph i created using letsplot that shows the rankings of how people rate each star wars movie seperating it into top third of their favorites, middle third, and bottom third.\n\n\nShow the code\nfrom lets_plot import *\nimport pandas as pd\n\nLetsPlot.setup_html()\n\nrank_cols = [f'rank_{i}' for i in range(1, 7)]\nrank_movie_map = {\n    'rank_1': 'The Phantom Menace',\n    'rank_2': 'Attack of the Clones',\n    'rank_3': 'Revenge of the Sith',\n    'rank_4': 'A New Hope',\n    'rank_5': 'The Empire Strikes Back',\n    'rank_6': 'Return of the Jedi'\n}\n\nlong_df = df[rank_cols].melt(var_name='RankCol', value_name='Rank')\nlong_df['Movie'] = long_df['RankCol'].map(rank_movie_map)\n\ndef ranking_category(rank):\n    rank = int(rank)\n    if rank in [1, 2]:\n        return 'Top third'\n    elif rank in [3, 4]:\n        return 'Middle third'\n    elif rank in [5, 6]:\n        return 'Bottom third'\n    return 'Unknown'\n\nlong_df['Category'] = long_df['Rank'].astype(int).apply(ranking_category)\n\ngroup_counts = long_df.groupby(['Movie', 'Category']).size().unstack(fill_value=0)\npercent_df = group_counts.div(group_counts.sum(axis=1), axis=0) * 100\nplot_df = percent_df.reset_index().melt(id_vars='Movie', var_name='Category', value_name='Percentage')\n\nplot_df['Category'] = pd.Categorical(\n    plot_df['Category'],\n    categories=['Top third', 'Middle third', 'Bottom third'],\n    ordered=True\n)\n\n(\nggplot(plot_df, aes(x='Movie', y='Percentage', fill='Category'))\n    +   geom_bar(stat='identity', position=position_dodge(width=0.8))\n    +   coord_flip()\n    +   scale_fill_manual(values={\n        'Top third': '#6DC067',\n        'Middle third': '#3498DB',\n        'Bottom third': '#E74C3C'\n    }) \n    +   labs(\n            title='How People Rate the “Star Wars” Movies',\n            subtitle='Each film’s % ranking in the top, middle, and bottom third\\n  (among 471 people who have seen all six)',\n            x='Movie',\n            y='Percentage (%)',\n            fill='Category'\n    )\n    +   theme(legend_position='right')\n)",
+    "crumbs": [
+      "Full Stack"
+    ]
+  },
+  {
+    "objectID": "full_stack.html#question-3",
+    "href": "full_stack.html#question-3",
+    "title": "To Infinity and Beyond…wait wrong movie",
+    "section": "QUESTION 3",
+    "text": "QUESTION 3\nCreate a new column that converts the location groupings to a single number (a.k.a. label encoding). Drop the location categorical column.\nSince in the prep for the machine learning model i allready had used one hot encoding on the location, i redefined the df to start from scratch. Here I was able to use label encoder to conver the locations to a single number to allow that number to represent each area in the database.\n\n\nShow the code\n# Label encode census region\nfrom sklearn.preprocessing import LabelEncoder\n\ndf = pd.read_csv('StarWars.csv', encoding='ISO-8859-1')\n\nle = LabelEncoder()\ndf['census_location_code'] = le.fit_transform(df['Location (Census Region)'])\ndf.drop(columns='Location (Census Region)', inplace=True)\n\ndf\n\n\n\n\n\n\n\n\n\nRespondentID\nHave you seen any of the 6 films in the Star Wars franchise?\nDo you consider yourself to be a fan of the Star Wars film franchise?\nWhich of the following Star Wars films have you seen? Please select all that apply.\nUnnamed: 4\nUnnamed: 5\nUnnamed: 6\nUnnamed: 7\nUnnamed: 8\nPlease rank the Star Wars films in order of preference with 1 being your favorite film in the franchise and 6 being your least favorite film.\n...\nUnnamed: 28\nWhich character shot first?\nAre you familiar with the Expanded Universe?\nDo you consider yourself to be a fan of the Expanded Universe?ï¿½ï¿½\nDo you consider yourself to be a fan of the Star Trek franchise?\nGender\nAge\nHousehold Income\nEducation\ncensus_location_code\n\n\n\n\n0\nNaN\nResponse\nResponse\nStar Wars: Episode I The Phantom Menace\nStar Wars: Episode II Attack of the Clones\nStar Wars: Episode III Revenge of the Sith\nStar Wars: Episode IV A New Hope\nStar Wars: Episode V The Empire Strikes Back\nStar Wars: Episode VI Return of the Jedi\nStar Wars: Episode I The Phantom Menace\n...\nYoda\nResponse\nResponse\nResponse\nResponse\nResponse\nResponse\nResponse\nResponse\n6\n\n\n1\n3.292880e+09\nYes\nYes\nStar Wars: Episode I The Phantom Menace\nStar Wars: Episode II Attack of the Clones\nStar Wars: Episode III Revenge of the Sith\nStar Wars: Episode IV A New Hope\nStar Wars: Episode V The Empire Strikes Back\nStar Wars: Episode VI Return of the Jedi\n3\n...\nVery favorably\nI don't understand this question\nYes\nNo\nNo\nMale\n18-29\nNaN\nHigh school degree\n7\n\n\n2\n3.292880e+09\nNo\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n...\nNaN\nNaN\nNaN\nNaN\nYes\nMale\n18-29\n$0 - $24,999\nBachelor degree\n9\n\n\n3\n3.292765e+09\nYes\nNo\nStar Wars: Episode I The Phantom Menace\nStar Wars: Episode II Attack of the Clones\nStar Wars: Episode III Revenge of the Sith\nNaN\nNaN\nNaN\n1\n...\nUnfamiliar (N/A)\nI don't understand this question\nNo\nNaN\nNo\nMale\n18-29\n$0 - $24,999\nHigh school degree\n8\n\n\n4\n3.292763e+09\nYes\nYes\nStar Wars: Episode I The Phantom Menace\nStar Wars: Episode II Attack of the Clones\nStar Wars: Episode III Revenge of the Sith\nStar Wars: Episode IV A New Hope\nStar Wars: Episode V The Empire Strikes Back\nStar Wars: Episode VI Return of the Jedi\n5\n...\nVery favorably\nI don't understand this question\nNo\nNaN\nYes\nMale\n18-29\n$100,000 - $149,999\nSome college or Associate degree\n8\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n1182\n3.288389e+09\nYes\nYes\nStar Wars: Episode I The Phantom Menace\nStar Wars: Episode II Attack of the Clones\nStar Wars: Episode III Revenge of the Sith\nStar Wars: Episode IV A New Hope\nStar Wars: Episode V The Empire Strikes Back\nStar Wars: Episode VI Return of the Jedi\n5\n...\nVery favorably\nHan\nNo\nNaN\nYes\nFemale\n18-29\n$0 - $24,999\nSome college or Associate degree\n0\n\n\n1183\n3.288379e+09\nYes\nYes\nStar Wars: Episode I The Phantom Menace\nStar Wars: Episode II Attack of the Clones\nStar Wars: Episode III Revenge of the Sith\nStar Wars: Episode IV A New Hope\nStar Wars: Episode V The Empire Strikes Back\nStar Wars: Episode VI Return of the Jedi\n4\n...\nVery favorably\nI don't understand this question\nNo\nNaN\nYes\nFemale\n30-44\n$50,000 - $99,999\nBachelor degree\n3\n\n\n1184\n3.288375e+09\nNo\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n...\nNaN\nNaN\nNaN\nNaN\nNo\nFemale\n30-44\n$50,000 - $99,999\nBachelor degree\n2\n\n\n1185\n3.288373e+09\nYes\nYes\nStar Wars: Episode I The Phantom Menace\nStar Wars: Episode II Attack of the Clones\nStar Wars: Episode III Revenge of the Sith\nStar Wars: Episode IV A New Hope\nStar Wars: Episode V The Empire Strikes Back\nStar Wars: Episode VI Return of the Jedi\n4\n...\nVery favorably\nHan\nNo\nNaN\nYes\nFemale\n45-60\n$100,000 - $149,999\nSome college or Associate degree\n0\n\n\n1186\n3.288373e+09\nYes\nNo\nStar Wars: Episode I The Phantom Menace\nStar Wars: Episode II Attack of the Clones\nNaN\nNaN\nStar Wars: Episode V The Empire Strikes Back\nStar Wars: Episode VI Return of the Jedi\n6\n...\nVery unfavorably\nI don't understand this question\nNo\nNaN\nNo\nFemale\n&gt; 60\n$50,000 - $99,999\nGraduate degree\n5\n\n\n\n\n1187 rows × 38 columns",
     "crumbs": [
       "Full Stack"
     ]
@@ -117,9 +192,42 @@
   {
     "objectID": "Full_Stack/project1.html",
     "href": "Full_Stack/project1.html",
-    "title": "Client Report - [Insert Project Title]",
+    "title": "Client Report - The War with Star Wars",
     "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "text": "Show the code\nimport pandas as pd \nimport numpy as np\nfrom lets_plot import *\n# add the additional libraries you need to import for ML here\n\nLetsPlot.setup_html(isolated_frame=True)",
+    "crumbs": [
+      "Full Stack",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Full_Stack/project1.html#question-1",
+    "href": "Full_Stack/project1.html#question-1",
+    "title": "Client Report - The War with Star Wars",
+    "section": "QUESTION 1",
+    "text": "QUESTION 1\nShorten the column names and clean them up for easier use with pandas. Provide a table or list that exemplifies how you fixed the names.\nHere we mapped the CSV to a pandas DataFrame, making sense of the column names and cleaning them for easier use.\n\n\nShow the code\ndf = pd.read_csv('../StarWars.csv', encoding='ISO-8859-1')\n\ncol_rename = {\n  'RespondentID': 'id',\n  'Have you seen any of the 6 films in the Star Wars franchise?': 'seen_sw',\n  'Do you consider yourself to be a fan of the Star Wars film franchise?': 'fan_sw',\n  'Which of the following Star Wars films have you seen? Please select all that apply.': 'seen_1',\n  'Unnamed: 4': 'seen_2',\n  'Unnamed: 5': 'seen_3',\n  'Unnamed: 6': 'seen_4',\n  'Unnamed: 7': 'seen_5',\n  'Unnamed: 8': 'seen_6',\n  'Please rank the Star Wars films in order of preference with 1 being your favorite film in the franchise and 6 being your least favorite film.': 'rank_1',\n  'Unnamed: 10': 'rank_2',\n  'Unnamed: 11': 'rank_3',\n  'Unnamed: 12': 'rank_4',\n  'Unnamed: 13': 'rank_5',\n  'Unnamed: 14': 'rank_6',\n  'Please state whether you view the following characters favorably, unfavorably, or are unfamiliar with him/her.': 'HanSolo_rank',\n  'Unnamed: 16': 'LukeSkywalker_rank',\n  'Unnamed: 17': 'PrincessLeia_rank',\n  'Unnamed: 18': 'AnakinSkywalker_rank',\n  'Unnamed: 19': 'ObiWan_rank',\n  'Unnamed: 20': 'EmperorPalpatine_rank',\n  'Unnamed: 21': 'DarthVader_rank',\n  'Unnamed: 22': 'LandoCalrissian_rank',\n  'Unnamed: 23': 'BobaFett_rank',\n  'Unnamed: 24': 'C-3P0_rank',\n  'Unnamed: 25': 'R2D2_rank',\n  'Unnamed: 26': 'JarJar_rank',\n  'Unnamed: 27': 'PadmeAmidala_rank',\n  'Unnamed: 28': 'Yoda_rank',\n  'Which character shot first?': 'character_shot_first',\n  'Are you familiar with the Expanded Universe?': 'know_expanded',\n  'Do you consider yourself to be a fan of the Expanded Universe?ï¿½ï¿½': 'fan_of_expanded',\n  'Do you consider yourself to be a fan of the Star Trek franchise?': 'st_fan',\n  'Gender': 'gender',\n  'Age': 'age',\n  'Household Income': 'house_income',\n  'Education': 'education',\n  'Location (Census Region)': 'census_location'\n}\n\ndf.rename(columns=col_rename, inplace=True)\ndf.drop(index=0, inplace=True)\n\nfor col in ['seen_1', 'seen_2', 'seen_3', 'seen_4', 'seen_5', 'seen_6']:\n    df[col] = df[col].apply(lambda x: 1 if not pd.isna(x) else 0)\n\ndf\n\n\n\n\n\n\n\n\n\nid\nseen_sw\nfan_sw\nseen_1\nseen_2\nseen_3\nseen_4\nseen_5\nseen_6\nrank_1\n...\nYoda_rank\ncharacter_shot_first\nknow_expanded\nfan_of_expanded\nst_fan\ngender\nage\nhouse_income\neducation\ncensus_location\n\n\n\n\n1\n3.292880e+09\nYes\nYes\n1\n1\n1\n1\n1\n1\n3\n...\nVery favorably\nI don't understand this question\nYes\nNo\nNo\nMale\n18-29\nNaN\nHigh school degree\nSouth Atlantic\n\n\n2\n3.292880e+09\nNo\nNaN\n0\n0\n0\n0\n0\n0\nNaN\n...\nNaN\nNaN\nNaN\nNaN\nYes\nMale\n18-29\n$0 - $24,999\nBachelor degree\nWest South Central\n\n\n3\n3.292765e+09\nYes\nNo\n1\n1\n1\n0\n0\n0\n1\n...\nUnfamiliar (N/A)\nI don't understand this question\nNo\nNaN\nNo\nMale\n18-29\n$0 - $24,999\nHigh school degree\nWest North Central\n\n\n4\n3.292763e+09\nYes\nYes\n1\n1\n1\n1\n1\n1\n5\n...\nVery favorably\nI don't understand this question\nNo\nNaN\nYes\nMale\n18-29\n$100,000 - $149,999\nSome college or Associate degree\nWest North Central\n\n\n5\n3.292731e+09\nYes\nYes\n1\n1\n1\n1\n1\n1\n5\n...\nSomewhat favorably\nGreedo\nYes\nNo\nNo\nMale\n18-29\n$100,000 - $149,999\nSome college or Associate degree\nWest North Central\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n1182\n3.288389e+09\nYes\nYes\n1\n1\n1\n1\n1\n1\n5\n...\nVery favorably\nHan\nNo\nNaN\nYes\nFemale\n18-29\n$0 - $24,999\nSome college or Associate degree\nEast North Central\n\n\n1183\n3.288379e+09\nYes\nYes\n1\n1\n1\n1\n1\n1\n4\n...\nVery favorably\nI don't understand this question\nNo\nNaN\nYes\nFemale\n30-44\n$50,000 - $99,999\nBachelor degree\nMountain\n\n\n1184\n3.288375e+09\nNo\nNaN\n0\n0\n0\n0\n0\n0\nNaN\n...\nNaN\nNaN\nNaN\nNaN\nNo\nFemale\n30-44\n$50,000 - $99,999\nBachelor degree\nMiddle Atlantic\n\n\n1185\n3.288373e+09\nYes\nYes\n1\n1\n1\n1\n1\n1\n4\n...\nVery favorably\nHan\nNo\nNaN\nYes\nFemale\n45-60\n$100,000 - $149,999\nSome college or Associate degree\nEast North Central\n\n\n1186\n3.288373e+09\nYes\nNo\n1\n1\n0\n0\n1\n1\n6\n...\nVery unfavorably\nI don't understand this question\nNo\nNaN\nNo\nFemale\n&gt; 60\n$50,000 - $99,999\nGraduate degree\nPacific\n\n\n\n\n1186 rows × 38 columns",
+    "crumbs": [
+      "Full Stack",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Full_Stack/project1.html#question-2",
+    "href": "Full_Stack/project1.html#question-2",
+    "title": "Client Report - The War with Star Wars",
+    "section": "QUESTION 2",
+    "text": "QUESTION 2\nFilter the dataset to 835 respondents that have seen at least one film (Hint: Don’t use the column Have you seen any of the 6 films in the Star Wars franchise?) Not much to show here by way of output. Print the shape (i.e. number of rows and number of columns) of the filtered dataset.\nSince the seen_sw response may be unreliable, I instead checked the individual seen_* columns to determine if a respondent had seen at least one movie.\n\n\nShow the code\nseen_cols = ['seen_1', 'seen_2', 'seen_3', 'seen_4', 'seen_5', 'seen_6']\n\ndf_filtered = df[df[seen_cols].sum(axis=1) &gt;= 1]\n\ndf_filtered.shape[0]\n\n\n835",
+    "crumbs": [
+      "Full Stack",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Full_Stack/project1.html#question-3",
+    "href": "Full_Stack/project1.html#question-3",
+    "title": "Client Report - The War with Star Wars",
+    "section": "QUESTION 3",
+    "text": "QUESTION 3\nValidate that the data provided on GitHub lines up with the article by recreating 2 of the visuals from the article. These visuals should be similar, but don’t have to be exact. They need to be close enough that we can validate that the values in the dataset match the graphs in the chart. Though their charts were built using a different plotting software, the more you push yourself for an exact replica, the more you will learn. Spend at least a couple of hours on this.\nBelow are two graphs that display information from the survey in the csv. The first graph shows the favorite movie out of people who have seen all six movies. The second graph shows a percentage of people who have seen each individual episode out of those who have seen at least one.\n\n\nShow the code\nseen_cols = ['seen_1', 'seen_2', 'seen_3', 'seen_4', 'seen_5', 'seen_6']\nrank_cols = ['rank_1', 'rank_2', 'rank_3', 'rank_4', 'rank_5', 'rank_6']\n\ndf_filtered = df[df[seen_cols].sum(axis=1) == 6]\nfav_counts = (df_filtered[rank_cols].apply(pd.to_numeric) == 1).sum().reset_index()\nfav_counts.columns = ['movie', 'count']\n\nname_map = {\n    'rank_1': 'The Phantom Menace',\n    'rank_2': 'Attack of the Clones',\n    'rank_3': 'Revenge of the Sith',\n    'rank_4': 'A New Hope',\n    'rank_5': 'The Empire Strikes Back',\n    'rank_6': 'Return of the Jedi'\n}\n\nfav_counts['movie'] = fav_counts['movie'].map(name_map)\n\nreordered_names = [\n    'Return of the Jedi',\n    'The Empire Strikes Back',\n    'A New Hope',\n    'Revenge of the Sith',\n    'Attack of the Clones',\n    'The Phantom Menace'\n]\n\nfav_counts['movie'] = pd.Categorical(fav_counts['movie'], categories=reordered_names, ordered=True)\n\n\n(\nggplot(fav_counts, aes(x='movie', y='count'))\n  + geom_bar(stat='identity')\n  + labs(\n      title='What\\'s the Best \\'Star Wars Movie',\n      subtitle='Of 471 respondents who have seen all six films',\n      x='',\n      y=''\n  )\n  + coord_flip()\n  + theme_minimal()\n  + theme(\n      panel_grid=element_blank(),\n      axis_text_y=element_blank(),\n      axis_ticks_y=element_blank(),\n      plot_title = element_text(hjust=.06, vjust=2, margin=[5, 5, 10], face='bold'),\n      plot_subtitle = element_text(hjust=.07),\n      plot_title_position = 'plot'\n  )\n  + geom_text(x=5, y=55, label='10%')\n  + geom_text(x=4, y=20, label='4')\n  + geom_text(x=3, y=30, label='6')\n  + geom_text(x=2, y=135, label='27')\n  + geom_text(x=1, y=175, label='36')\n  + geom_text(x=0, y=87, label='17')\n)\n\n\n\n   \n       \n       \n       \n   \n   \n          \n   \n   \n\n\n\n\n\nShow the code\nseen_cols = ['seen_1', 'seen_2', 'seen_3', 'seen_4', 'seen_5', 'seen_6']\n\ndf_filtered = df[df[seen_cols].sum(axis=1) &gt;= 1]\n\nseen_counts = df_filtered[seen_cols].apply(pd.to_numeric).sum().reset_index()\nseen_counts.columns = ['movie', 'count']\n\nmovie_names = ['Ep I', 'Ep II', 'Ep III', 'Ep IV', 'Ep V', 'Ep VI']\nseen_counts['movie'] = movie_names\n\ntotal_respondents = len(df_filtered)\nseen_counts['percent'] = (seen_counts['count'] / total_respondents) * 100\n\nordered_names = ['Ep VI', 'Ep V', 'Ep IV', 'Ep III', 'Ep II', 'Ep I']\nseen_counts['movie'] = pd.Categorical(seen_counts['movie'], categories=ordered_names, ordered=True)\n\nname_map = {\n    'Ep I': 'The Phantom Menace',\n    'Ep II': 'Attack of the Clones',\n    'Ep III': 'Revenge of the Sith',\n    'Ep IV': 'A New Hope',\n    'Ep V': 'The Empire Strikes Back',\n    'Ep VI': 'Return of the Jedi'\n}\n\nseen_counts['movie'] = seen_counts['movie'].map(name_map)\n\nreordered_names = [\n    'Return of the Jedi',\n    'The Empire Strikes Back',\n    'A New Hope',\n    'Revenge of the Sith',\n    'Attack of the Clones',\n    'The Phantom Menace'\n]\n\nseen_counts['movie'] = pd.Categorical(seen_counts['movie'], categories=reordered_names, ordered=True)\n\nseen_counts\n\n(\n    ggplot(seen_counts, aes(x='movie', y='percent'))\n    + geom_bar(stat='identity')\n    + labs(\n        title='Which Star Wars Movie Have You Seen?',\n        subtitle=f'Of {total_respondents} respondents',\n        x='',\n        y=''\n    )\n    + coord_flip()\n    + theme_minimal()\n    + theme(\n        panel_grid=element_blank(),\n        axis_text_y=element_blank(),\n        axis_ticks_y=element_blank(),\n        plot_title = element_text(hjust=.06, vjust=2, margin=[5, 5, 10], face='bold'),\n        plot_subtitle = element_text(hjust=.07),\n        plot_title_position = 'plot'\n        )\n    + geom_text(x=5, y=85, label='80%')\n    + geom_text(x=4, y=71, label='68')\n    + geom_text(x=3, y=69, label='66')\n    + geom_text(x=2, y=76, label='73')\n    + geom_text(x=1, y=94, label='91')\n    + geom_text(x=0, y=91, label='88')\n)",
     "crumbs": [
       "Full Stack",
       "Project 1"
@@ -128,20 +236,9 @@
   {
     "objectID": "competition.html",
     "href": "competition.html",
-    "title": "about me",
+    "title": "Your_Name - Data Science Portfolio",
     "section": "",
-    "text": "MarkDown Basics",
-    "crumbs": [
-      "Competitions",
-      "Competition"
-    ]
-  },
-  {
-    "objectID": "competition.html#title-2-header",
-    "href": "competition.html#title-2-header",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics",
+    "text": "import pandas as pd \nimport numpy as np\nimport sqlite3\nfrom lets_plot import *\n\nLetsPlot.setup_html(isolated_frame=True)\n\n\n# Learn morea about Code Cells: https://quarto.org/docs/reference/cells/cells-jupyter.html\n\n# Include and execute your code here\nsqlite_file = 'lahmansbaseballdb.sqlite'\n# this file must be in the same location as your .qmd or .py file\ncon = sqlite3.connect(sqlite_file)\n\n\nq = '''\n    WITH primary_position AS (\n        SELECT playerID, yearID, POS,\n           ROW_NUMBER() OVER (PARTITION BY playerID, yearID ORDER BY SUM(G) DESC) as rn\n        FROM fielding\n        GROUP BY playerID, yearID, POS\n    ),\n    position_salaries AS (\n        SELECT f.playerID, f.yearID, f.POS, s.salary\n        FROM primary_position f\n        JOIN salaries s ON f.playerID = s.playerID AND f.yearID = s.yearID\n        WHERE f.rn = 1\n    )\n    SELECT \n        POS AS position,\n        ROUND(AVG(salary), 2) AS average_salary,\n        COUNT(DISTINCT playerID) AS total_players,\n        MAX(salary) AS highest_salary,\n        CASE \n            WHEN AVG(salary) &gt; 3000000 THEN 'High Salary'\n            WHEN AVG(salary) BETWEEN 2000000 AND 3000000 THEN 'Medium Salary'\n            ELSE 'Low Salary'\n        END AS salary_category\n        FROM position_salaries\n        GROUP BY POS\n        ORDER BY average_salary DESC;\n    '''\n\nresults = pd.read_sql_query(q, con)\nresults\n\n\n\n\n\n\n\n\nposition\naverage_salary\ntotal_players\nhighest_salary\nsalary_category\n\n\n\n\n0\n1B\n3380780.30\n454\n28000000.0\nHigh Salary\n\n\n1\nOF\n2396919.04\n1128\n27328046.0\nMedium Salary\n\n\n2\n3B\n2323326.28\n490\n33000000.0\nMedium Salary\n\n\n3\nSS\n1973603.73\n377\n22600000.0\nLow Salary\n\n\n4\nP\n1938130.80\n2556\n33000000.0\nLow Salary\n\n\n5\n2B\n1821073.90\n478\n24000000.0\nLow Salary\n\n\n6\nC\n1430337.51\n403\n23000000.0\nLow Salary\n\n\n\n\n\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Competitions",
       "Competition"
@@ -150,9 +247,31 @@
   {
     "objectID": "Competition/project2.html",
     "href": "Competition/project2.html",
-    "title": "Client Report - [Insert Project Title]",
+    "title": "Client Report - BYU-Idaho Players and Comparing Teams",
     "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "text": "Show the code\nimport pandas as pd \nimport numpy as np\nimport sqlite3\nfrom lets_plot import *\n\nLetsPlot.setup_html(isolated_frame=True)\nShow the code\n# Learn morea about Code Cells: https://quarto.org/docs/reference/cells/cells-jupyter.html\n\n# Include and execute your code here\nsqlite_file = 'lahmansbaseballdb.sqlite'\n# this file must be in the same location as your .qmd or .py file\ncon = sqlite3.connect(sqlite_file)",
+    "crumbs": [
+      "Competitions",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "Competition/project2.html#question-1",
+    "href": "Competition/project2.html#question-1",
+    "title": "Client Report - BYU-Idaho Players and Comparing Teams",
+    "section": "QUESTION 1",
+    "text": "QUESTION 1\nWrite an SQL query to create a new dataframe about baseball players who attended BYU-Idaho. The new table should contain five columns: playerID, schoolID, salary, and the yearID/teamID associated with each salary. Order the table by salary (highest to lowest) and print out the table in your report.\nTable shows that there were 2 players with that went to BYUI with the most earning in their careers being 400k down to the minimum of 150k.\n\n\nShow the code\nq = '''\n  SELECT \n    s.playerID,\n    c.schoolID,\n    s.salary,\n    s.yearID,\n    s.teamID\n  FROM \n    Salaries s\n  JOIN \n    CollegePlaying c ON s.playerID = c.playerID\n  WHERE \n    c.schoolID = 'idbyuid'\n  ORDER BY \n    s.salary DESC;\n  '''\nresults = pd.read_sql_query(q, con)\nresults\n\n\n\n\n\n\n\n\n\nplayerID\nschoolID\nsalary\nyearID\nteamID\n\n\n\n\n0\nlindsma01\nidbyuid\n4000000.0\n2014\nCHA\n\n\n1\nlindsma01\nidbyuid\n4000000.0\n2014\nCHA\n\n\n2\nlindsma01\nidbyuid\n3600000.0\n2012\nBAL\n\n\n3\nlindsma01\nidbyuid\n3600000.0\n2012\nBAL\n\n\n4\nlindsma01\nidbyuid\n2800000.0\n2011\nCOL\n\n\n5\nlindsma01\nidbyuid\n2800000.0\n2011\nCOL\n\n\n6\nlindsma01\nidbyuid\n2300000.0\n2013\nCHA\n\n\n7\nlindsma01\nidbyuid\n2300000.0\n2013\nCHA\n\n\n8\nlindsma01\nidbyuid\n1625000.0\n2010\nHOU\n\n\n9\nlindsma01\nidbyuid\n1625000.0\n2010\nHOU\n\n\n10\nstephga01\nidbyuid\n1025000.0\n2001\nSLN\n\n\n11\nstephga01\nidbyuid\n1025000.0\n2001\nSLN\n\n\n12\nstephga01\nidbyuid\n900000.0\n2002\nSLN\n\n\n13\nstephga01\nidbyuid\n900000.0\n2002\nSLN\n\n\n14\nstephga01\nidbyuid\n800000.0\n2003\nSLN\n\n\n15\nstephga01\nidbyuid\n800000.0\n2003\nSLN\n\n\n16\nstephga01\nidbyuid\n550000.0\n2000\nSLN\n\n\n17\nstephga01\nidbyuid\n550000.0\n2000\nSLN\n\n\n18\nlindsma01\nidbyuid\n410000.0\n2009\nFLO\n\n\n19\nlindsma01\nidbyuid\n410000.0\n2009\nFLO\n\n\n20\nlindsma01\nidbyuid\n395000.0\n2008\nFLO\n\n\n21\nlindsma01\nidbyuid\n395000.0\n2008\nFLO\n\n\n22\nlindsma01\nidbyuid\n380000.0\n2007\nFLO\n\n\n23\nlindsma01\nidbyuid\n380000.0\n2007\nFLO\n\n\n24\nstephga01\nidbyuid\n215000.0\n1999\nSLN\n\n\n25\nstephga01\nidbyuid\n215000.0\n1999\nSLN\n\n\n26\nstephga01\nidbyuid\n185000.0\n1998\nPHI\n\n\n27\nstephga01\nidbyuid\n185000.0\n1998\nPHI\n\n\n28\nstephga01\nidbyuid\n150000.0\n1997\nPHI\n\n\n29\nstephga01\nidbyuid\n150000.0\n1997\nPHI",
+    "crumbs": [
+      "Competitions",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "Competition/project2.html#question-2",
+    "href": "Competition/project2.html#question-2",
+    "title": "Client Report - BYU-Idaho Players and Comparing Teams",
+    "section": "QUESTION 2",
+    "text": "QUESTION 2\nPick any two baseball teams and compare them using a metric of your choice (average salary, home runs, number of wins, etc). Be creative! Write an SQL query to get the data you need, then make a graph using Lets-Plot to visualize the comparison. What do you learn?\nThis table compares the average salary between the yankees and athletics over time\n\n\nShow the code\nq = '''\n    SELECT \n      teamID,\n      yearID,\n      AVG(salary) AS avg_salary\n    FROM \n      Salaries\n    WHERE \n      teamID IN ('NYA', 'OAK')\n    GROUP BY \n      teamID, yearID\n    ORDER BY \n      yearID;\n    '''\nresults = pd.read_sql_query(q, con)\nresults\n\n\n\n\n\n\n\n\n\nteamID\nyearID\navg_salary\n\n\n\n\n0\nNYA\n1985\n7.119102e+05\n\n\n1\nOAK\n1985\n4.313622e+05\n\n\n2\nNYA\n1986\n6.605090e+05\n\n\n3\nOAK\n1986\n3.154652e+05\n\n\n4\nNYA\n1987\n4.885633e+05\n\n\n...\n...\n...\n...\n\n\n59\nOAK\n2014\n2.784938e+06\n\n\n60\nNYA\n2015\n7.336274e+06\n\n\n61\nOAK\n2015\n2.823339e+06\n\n\n62\nNYA\n2016\n7.689579e+06\n\n\n63\nOAK\n2016\n2.893541e+06\n\n\n\n\n64 rows × 3 columns\n\n\n\n\n\nShow the code\n(\nggplot(results, aes(x='yearID', y='avg_salary', color='teamID'))\n  + geom_line(size=1.5)\n  + geom_point()\n  + ggtitle(\"Average Salary Over Time: Yankees vs. Athletics\")\n  + xlab(\"Year\") + ylab(\"Average Salary (USD)\")\n  + theme_minimal()\n)",
     "crumbs": [
       "Competitions",
       "Project 2"
@@ -183,9 +302,42 @@
   {
     "objectID": "Cleansing_Exploration/project2.html",
     "href": "Cleansing_Exploration/project2.html",
-    "title": "Client Report - [Insert Project Title]",
+    "title": "Client Report - Weather Delays",
     "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "text": "Code\nimport pandas as pd \nimport numpy as np\nimport sqlite3\nfrom lets_plot import *\n\nLetsPlot.setup_html(isolated_frame=True)\nCode\n# Learn morea about Code Cells: https://quarto.org/docs/reference/cells/cells-jupyter.html\n\n# Include and execute your code here\ndf = pd.read_json(\"https://github.com/byuidatascience/data4missing/raw/master/data-raw/flights_missing/flights_missing.json\")",
+    "crumbs": [
+      "Data Exploration",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Exploration/project2.html#question-1",
+    "href": "Cleansing_Exploration/project2.html#question-1",
+    "title": "Client Report - Weather Delays",
+    "section": "QUESTION 1",
+    "text": "QUESTION 1\n\nWhich airport has the worst delays? Describe the metric you chose, and why you chose it to determine the “worst” airport. Your answer should include a info table that lists (for each airport) the total number of flights, total number of delayed flights, proportion of delayed flights, and average delay time in hours.\n\nHere we can see that O’Hare International in Chicago has the longest average delay while San Francisco Internation Airport has the highest chance of a delay happening.\n\n\nCode\ninfo = df.groupby('airport_name').agg(\n    total_flights=('num_of_flights_total', 'sum'),\n    delayed_flights=('num_of_delays_total', 'sum'),\n    delay_minutes=('minutes_delayed_total', 'sum')\n)\n\ninfo['delay_proportion'] = info['delayed_flights'] / info['total_flights']\ninfo['avg_delay_hours'] = info['delay_minutes'] / info['delayed_flights'] / 60\n\ninfo.sort_values(by='avg_delay_hours', ascending=False).round(2)\n\n\n\n\n\n\n\n\n\ntotal_flights\ndelayed_flights\ndelay_minutes\ndelay_proportion\navg_delay_hours\n\n\nairport_name\n\n\n\n\n\n\n\n\n\nChicago, IL: Chicago O'Hare International\n3400032\n773122\n52165135\n0.23\n1.12\n\n\nSan Francisco, CA: San Francisco International\n1565257\n408631\n25488636\n0.26\n1.04\n\n\n\n884879\n172413\n10611978\n0.19\n1.03\n\n\nWashington, DC: Washington Dulles International\n773480\n152630\n9322510\n0.20\n1.02\n\n\nAtlanta, GA: Hartsfield-Jackson Atlanta International\n4235114\n870910\n52114971\n0.21\n1.00\n\n\nDenver, CO: Denver International\n2323376\n439964\n23660463\n0.19\n0.90\n\n\nSalt Lake City, UT: Salt Lake City International\n1293072\n190733\n9460901\n0.15\n0.83\n\n\nSan Diego, CA: San Diego International\n870161\n167747\n7922432\n0.19\n0.79",
+    "crumbs": [
+      "Data Exploration",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Exploration/project2.html#question-2",
+    "href": "Cleansing_Exploration/project2.html#question-2",
+    "title": "Client Report - Weather Delays",
+    "section": "QUESTION 2",
+    "text": "QUESTION 2\nAccording to the BTS website, the “Weather” category only accounts for severe weather delays. Mild weather delays are not counted in the “Weather” category, but are actually included in both the “NAS” and “Late-Arriving Aircraft” categories. Your job is to create a new column that calculates the total number of flights delayed by weather (both severe and mild). You will need to replace all the missing values in the Late Aircraft variable with the mean. Show your work by printing the first 5 rows of data in a table. Use these three rules for your calculations:\na. 100% of delayed flights in the Weather category are due to weather  \na. 30% of all delayed flights in the Late-Arriving category are due to weather  \na. From April to August, 40% of delayed flights in the NAS category are due to weather. The rest of the months, the proportion rises to 65%  \nHere we can see that Hartsfield Jacksons Atlanta Airport has by far the most delays due to all weather sources.\n\n\nCode\ndf['num_of_delays_late_aircraft'] = df['num_of_delays_late_aircraft'].fillna(df['num_of_delays_late_aircraft'].mean())\n\nmonth_map = {\n    'January': 1, 'February': 2, 'March': 3,\n    'April': 4, 'May': 5, 'June': 6,\n    'July': 7, 'August': 8, 'September': 9,\n    'October': 10, 'November': 11, 'December': 12\n}\n\nmonth_num = df['month'].map(month_map)\n\ndf['nas_weather_fraction'] = np.where(\n    month_num.between(4, 8), \n    0.40, \n    0.65\n)\n\ndf['weather_delay_total'] = (\n    df['num_of_delays_weather'] + \n    0.30 * df['num_of_delays_late_aircraft'] + \n    df['num_of_delays_nas'] * df['nas_weather_fraction']\n)\n\ndf['weather_delay_total'] = round(df['weather_delay_total'], 2)\n\ndf[['airport_name', 'month', 'weather_delay_total']]\n\n\n\n\n\n\n\n\n\nairport_name\nmonth\nweather_delay_total\n\n\n\n\n0\nAtlanta, GA: Hartsfield-Jackson Atlanta Intern...\nJanuary\n3137.00\n\n\n1\nDenver, CO: Denver International\nJanuary\n1119.15\n\n\n2\n\nJanuary\n960.15\n\n\n3\nChicago, IL: Chicago O'Hare International\nJanuary\n4502.25\n\n\n4\nSan Diego, CA: San Diego International\nJanuary\n674.70\n\n\n...\n...\n...\n...\n\n\n919\nWashington, DC: Washington Dulles International\nDecember\n111.55\n\n\n920\nChicago, IL: Chicago O'Hare International\nDecember\n1593.10\n\n\n921\nSan Diego, CA: San Diego International\nn/a\n385.20\n\n\n922\nSan Francisco, CA: San Francisco International\nDecember\n2042.80\n\n\n923\nSalt Lake City, UT: Salt Lake City International\nDecember\n557.40\n\n\n\n\n924 rows × 3 columns",
+    "crumbs": [
+      "Data Exploration",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Exploration/project2.html#question-3",
+    "href": "Cleansing_Exploration/project2.html#question-3",
+    "title": "Client Report - Weather Delays",
+    "section": "Question 3",
+    "text": "Question 3\nUsing the new weather variable calculated above, create a barplot showing the proportion of all flights that are delayed by weather at each airport. Describe what you learn from this graph.\nThis graph shows the proportion of flights that are delayed due to weather which really just shows which citys have bad weather the most.\n\n\nCode\nweather_summary = df.groupby('airport_name').agg(\n    total_flights=('num_of_flights_total', 'sum'),\n    weather_delays=('weather_delay_total', 'sum')\n).reset_index()\n\nweather_summary['weather_delay_rate'] = (\n    weather_summary['weather_delays'] / weather_summary['total_flights']\n)\n\n(\nggplot(weather_summary, aes(x='airport_name', y='weather_delay_rate'))\n  + geom_bar(stat='identity', fill='#1f77b4')\n  + coord_flip()\n  + ggtitle(\"Proportion of Flights Delayed by Weather\")\n  + ylab(\"Delay Rate\")\n  + xlab(\"Airport\")\n)",
     "crumbs": [
       "Data Exploration",
       "Project 2"
@@ -214,9 +366,20 @@
   {
     "objectID": "Cleansing_Exploration/project1.html",
     "href": "Cleansing_Exploration/project1.html",
-    "title": "Client Report - [Insert Project Title]",
+    "title": "Client Report - Missing Data and JSON",
     "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "text": "Show the code\nimport pandas as pd \nimport numpy as np\nimport sqlite3\nfrom lets_plot import *\n\nLetsPlot.setup_html(isolated_frame=True)\nShow the code\n# Learn morea about Code Cells: https://quarto.org/docs/reference/cells/cells-jupyter.html\n\n# Include and execute your code here\ndf = pd.read_json(\"https://github.com/byuidatascience/data4missing/raw/master/data-raw/flights_missing/flights_missing.json\")\n\ndf\n\n\n\n\n\n\n\n\n\nairport_code\nairport_name\nmonth\nyear\nnum_of_flights_total\nnum_of_delays_carrier\nnum_of_delays_late_aircraft\nnum_of_delays_nas\nnum_of_delays_security\nnum_of_delays_weather\nnum_of_delays_total\nminutes_delayed_carrier\nminutes_delayed_late_aircraft\nminutes_delayed_nas\nminutes_delayed_security\nminutes_delayed_weather\nminutes_delayed_total\n\n\n\n\n0\nATL\nAtlanta, GA: Hartsfield-Jackson Atlanta Intern...\nJanuary\n2005.0\n35048\n1500+\n-999\n4598\n10\n448\n8355\n116423.0\n104415\n207467.0\n297\n36931\n465533\n\n\n1\nDEN\nDenver, CO: Denver International\nJanuary\n2005.0\n12687\n1041\n928\n935\n11\n233\n3153\n53537.0\n70301\n36817.0\n363\n21779\n182797\n\n\n2\nIAD\n\nJanuary\n2005.0\n12381\n414\n1058\n895\n4\n61\n2430\nNaN\n70919\n35660.0\n208\n4497\n134881\n\n\n3\nORD\nChicago, IL: Chicago O'Hare International\nJanuary\n2005.0\n28194\n1197\n2255\n5415\n5\n306\n9178\n88691.0\n160811\n364382.0\n151\n24859\n638894\n\n\n4\nSAN\nSan Diego, CA: San Diego International\nJanuary\n2005.0\n7283\n572\n680\n638\n7\n56\n1952\n27436.0\n38445\n21127.0\n218\n4326\n91552\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n919\nIAD\nWashington, DC: Washington Dulles International\nDecember\n2015.0\n2799\n182\n183\n61\n0\n17\n443\nNaN\n15438\n2826.0\n0\n1825\n31164\n\n\n920\nORD\nChicago, IL: Chicago O'Hare International\nDecember\n2015.0\n25568\n923\n1755\n1364\n11\n180\n4233\n80962.0\n132055\n72045.0\n435\n22459\n307956\n\n\n921\nSAN\nSan Diego, CA: San Diego International\nn/a\n2015.0\n6231\n480\n606\n256\n5\n37\n1383\n25402.0\n35796\n9038.0\n161\n2742\n73139\n\n\n922\nSFO\nSan Francisco, CA: San Francisco International\nDecember\n2015.0\n13833\n757\n1180\n2372\n9\n147\n4465\n55283.0\n96703\n193525.0\n285\n13788\n359584\n\n\n923\nSLC\nSalt Lake City, UT: Salt Lake City International\nDecember\n2015.0\n8804\n483\n796\n404\n5\n56\n1745\n37354.0\n49549\n13515.0\n158\n6693\n107269\n\n\n\n\n924 rows × 17 columns",
+    "crumbs": [
+      "Data Exploration",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Exploration/project1.html#question-1",
+    "href": "Cleansing_Exploration/project1.html#question-1",
+    "title": "Client Report - Missing Data and JSON",
+    "section": "QUESTION 1",
+    "text": "QUESTION 1\nFix all of the varied missing data types in the data to be consistent: use np.nan to represent missing value. In your report include one record example (one row) from your clean data, in the raw JSON format. Your example should display at least one missing value so that we can verify it was done correctly. (Note: JSON will convert NaN’s to “null”). Describe your process for finding values that needed to be changed, and how you changed them.__\nI started by replacing all of the missing values with the correct np.nan so that they would all be found correctly by fillna. I then replaced missing airport names with the airports code, and used forward fill on month and years column. For the delays due to late air craft i was able to calculate it with the num_of_delays_total due to it being the only one with missing value out of all of the counting cause of delay related column. Finally i simply calculated the average of the minutes delays columns and filled missing values with that die to so many columns with missing values.\n\n\nShow the code\n# cleans all missing values to be updated later\nmissing_values = [\"\", 'n/a', -999]\ndf_cleaned = df.replace(missing_values, np.nan)\n\n# replace data\ndf_cleaned['airport_name'] = df_cleaned['airport_name'].fillna(df_cleaned['airport_code'])\ndf_cleaned['month'] = df_cleaned['month'].ffill()\ndf_cleaned['year'] = df_cleaned['year'].ffill()\n\n# guesses the number of delays due to late aircraft through math on other columns\ndelays_carrier = df_cleaned['num_of_delays_carrier']\ndelays_carrier = pd.to_numeric(df_cleaned['num_of_delays_carrier'].replace('1500+', 1500))\ndf_cleaned['num_of_delays_late_aircraft'] = df_cleaned['num_of_delays_total'] - df_cleaned['num_of_delays_weather'] - df_cleaned['num_of_delays_security'] - df_cleaned['num_of_delays_nas'] - delays_carrier\n\ndf_cleaned['minutes_delayed_carrier'] = df_cleaned['minutes_delayed_carrier'].fillna(df_cleaned['minutes_delayed_carrier'].mean())\ndf_cleaned['minutes_delayed_nas'] = df_cleaned['minutes_delayed_nas'].fillna(df_cleaned['minutes_delayed_nas'].mean())\ndf_cleaned['minutes_delayed_security'] = df_cleaned['minutes_delayed_security'].fillna(df_cleaned['minutes_delayed_security'].mean())\ndf_cleaned\n\n\n\n\n\n\n\n\n\nairport_code\nairport_name\nmonth\nyear\nnum_of_flights_total\nnum_of_delays_carrier\nnum_of_delays_late_aircraft\nnum_of_delays_nas\nnum_of_delays_security\nnum_of_delays_weather\nnum_of_delays_total\nminutes_delayed_carrier\nminutes_delayed_late_aircraft\nminutes_delayed_nas\nminutes_delayed_security\nminutes_delayed_weather\nminutes_delayed_total\n\n\n\n\n0\nATL\nAtlanta, GA: Hartsfield-Jackson Atlanta Intern...\nJanuary\n2005.0\n35048\n1500+\n1799\n4598\n10\n448\n8355\n116423.00000\n104415\n207467.0\n297\n36931\n465533\n\n\n1\nDEN\nDenver, CO: Denver International\nJanuary\n2005.0\n12687\n1041\n933\n935\n11\n233\n3153\n53537.00000\n70301\n36817.0\n363\n21779\n182797\n\n\n2\nIAD\nIAD\nJanuary\n2005.0\n12381\n414\n1056\n895\n4\n61\n2430\n51902.25344\n70919\n35660.0\n208\n4497\n134881\n\n\n3\nORD\nChicago, IL: Chicago O'Hare International\nJanuary\n2005.0\n28194\n1197\n2255\n5415\n5\n306\n9178\n88691.00000\n160811\n364382.0\n151\n24859\n638894\n\n\n4\nSAN\nSan Diego, CA: San Diego International\nJanuary\n2005.0\n7283\n572\n679\n638\n7\n56\n1952\n27436.00000\n38445\n21127.0\n218\n4326\n91552\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n919\nIAD\nWashington, DC: Washington Dulles International\nDecember\n2015.0\n2799\n182\n183\n61\n0\n17\n443\n51902.25344\n15438\n2826.0\n0\n1825\n31164\n\n\n920\nORD\nChicago, IL: Chicago O'Hare International\nDecember\n2015.0\n25568\n923\n1755\n1364\n11\n180\n4233\n80962.00000\n132055\n72045.0\n435\n22459\n307956\n\n\n921\nSAN\nSan Diego, CA: San Diego International\nDecember\n2015.0\n6231\n480\n605\n256\n5\n37\n1383\n25402.00000\n35796\n9038.0\n161\n2742\n73139\n\n\n922\nSFO\nSan Francisco, CA: San Francisco International\nDecember\n2015.0\n13833\n757\n1180\n2372\n9\n147\n4465\n55283.00000\n96703\n193525.0\n285\n13788\n359584\n\n\n923\nSLC\nSalt Lake City, UT: Salt Lake City International\nDecember\n2015.0\n8804\n483\n797\n404\n5\n56\n1745\n37354.00000\n49549\n13515.0\n158\n6693\n107269\n\n\n\n\n924 rows × 17 columns\n\n\n\nBelow from line 7, you can see that the 7th row had -999 for the number of delays due to late air craft and the cleaned df fixes this.\n\n\nShow the code\nprint(f'Origional Data on  row:\\n{df.iloc[7]}')\nprint(f'Cleaned Data on  row{df_cleaned.iloc[7]}')\n\n\nOrigional Data on  row:\nairport_code                                                                   ATL\nairport_name                     Atlanta, GA: Hartsfield-Jackson Atlanta Intern...\nmonth                                                                      Febuary\nyear                                                                        2005.0\nnum_of_flights_total                                                         33702\nnum_of_delays_carrier                                                         1288\nnum_of_delays_late_aircraft                                                   -999\nnum_of_delays_nas                                                             6104\nnum_of_delays_security                                                           2\nnum_of_delays_weather                                                          399\nnum_of_delays_total                                                           9195\nminutes_delayed_carrier                                                    86876.0\nminutes_delayed_late_aircraft                                                86698\nminutes_delayed_nas                                                       321969.0\nminutes_delayed_security                                                        36\nminutes_delayed_weather                                                      31944\nminutes_delayed_total                                                       527523\nName: 7, dtype: object\nCleaned Data on  rowairport_code                                                                   ATL\nairport_name                     Atlanta, GA: Hartsfield-Jackson Atlanta Intern...\nmonth                                                                      Febuary\nyear                                                                        2005.0\nnum_of_flights_total                                                         33702\nnum_of_delays_carrier                                                         1288\nnum_of_delays_late_aircraft                                                   1402\nnum_of_delays_nas                                                             6104\nnum_of_delays_security                                                           2\nnum_of_delays_weather                                                          399\nnum_of_delays_total                                                           9195\nminutes_delayed_carrier                                                    86876.0\nminutes_delayed_late_aircraft                                                86698\nminutes_delayed_nas                                                       321969.0\nminutes_delayed_security                                                        36\nminutes_delayed_weather                                                      31944\nminutes_delayed_total                                                       527523\nName: 7, dtype: object",
     "crumbs": [
       "Data Exploration",
       "Project 1"
@@ -225,9 +388,20 @@
   {
     "objectID": "Cleansing_Exploration/project3.html",
     "href": "Cleansing_Exploration/project3.html",
-    "title": "Client Report - [Insert Project Title]",
+    "title": "Client Report - If not now, when?",
     "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "text": "Show the code\nimport pandas as pd \nimport numpy as np\nimport sqlite3\nfrom lets_plot import *\n\nLetsPlot.setup_html(isolated_frame=True)\nShow the code\n# Learn morea about Code Cells: https://quarto.org/docs/reference/cells/cells-jupyter.html\n\n# Include and execute your code here\ndf = pd.read_json(\"https://github.com/byuidatascience/data4missing/raw/master/data-raw/flights_missing/flights_missing.json\")\n\ndf\n\n\n\n\n\n\n\n\n\nairport_code\nairport_name\nmonth\nyear\nnum_of_flights_total\nnum_of_delays_carrier\nnum_of_delays_late_aircraft\nnum_of_delays_nas\nnum_of_delays_security\nnum_of_delays_weather\nnum_of_delays_total\nminutes_delayed_carrier\nminutes_delayed_late_aircraft\nminutes_delayed_nas\nminutes_delayed_security\nminutes_delayed_weather\nminutes_delayed_total\n\n\n\n\n0\nATL\nAtlanta, GA: Hartsfield-Jackson Atlanta Intern...\nJanuary\n2005.0\n35048\n1500+\n-999\n4598\n10\n448\n8355\n116423.0\n104415\n207467.0\n297\n36931\n465533\n\n\n1\nDEN\nDenver, CO: Denver International\nJanuary\n2005.0\n12687\n1041\n928\n935\n11\n233\n3153\n53537.0\n70301\n36817.0\n363\n21779\n182797\n\n\n2\nIAD\n\nJanuary\n2005.0\n12381\n414\n1058\n895\n4\n61\n2430\nNaN\n70919\n35660.0\n208\n4497\n134881\n\n\n3\nORD\nChicago, IL: Chicago O'Hare International\nJanuary\n2005.0\n28194\n1197\n2255\n5415\n5\n306\n9178\n88691.0\n160811\n364382.0\n151\n24859\n638894\n\n\n4\nSAN\nSan Diego, CA: San Diego International\nJanuary\n2005.0\n7283\n572\n680\n638\n7\n56\n1952\n27436.0\n38445\n21127.0\n218\n4326\n91552\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n919\nIAD\nWashington, DC: Washington Dulles International\nDecember\n2015.0\n2799\n182\n183\n61\n0\n17\n443\nNaN\n15438\n2826.0\n0\n1825\n31164\n\n\n920\nORD\nChicago, IL: Chicago O'Hare International\nDecember\n2015.0\n25568\n923\n1755\n1364\n11\n180\n4233\n80962.0\n132055\n72045.0\n435\n22459\n307956\n\n\n921\nSAN\nSan Diego, CA: San Diego International\nn/a\n2015.0\n6231\n480\n606\n256\n5\n37\n1383\n25402.0\n35796\n9038.0\n161\n2742\n73139\n\n\n922\nSFO\nSan Francisco, CA: San Francisco International\nDecember\n2015.0\n13833\n757\n1180\n2372\n9\n147\n4465\n55283.0\n96703\n193525.0\n285\n13788\n359584\n\n\n923\nSLC\nSalt Lake City, UT: Salt Lake City International\nDecember\n2015.0\n8804\n483\n796\n404\n5\n56\n1745\n37354.0\n49549\n13515.0\n158\n6693\n107269\n\n\n\n\n924 rows × 17 columns",
+    "crumbs": [
+      "Data Exploration",
+      "Project 3"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Exploration/project3.html#question-1",
+    "href": "Cleansing_Exploration/project3.html#question-1",
+    "title": "Client Report - If not now, when?",
+    "section": "QUESTION 1",
+    "text": "QUESTION 1\nWhat is the best month to fly if you want to avoid delays of any length? Describe the metric you chose and why you chose it to calculate your answer. Include one chart to help support your answer, with the x-axis ordered by month.\nI used a variable i calculated delay_ratio by dividing total delays by total flights and then grouping by month and getting the average of each airport. With this I was able to create a graph that shows September is the optimal month to fly.\n\n\nShow the code\n# replace missing values to np.nan to easier be dealt with\nmissing_values = [\"\", 'n/a', -999]\ndf = df.replace(missing_values, np.nan)\ndf['month'] = df['month'].ffill()\n\n# create new delay ratio column to be used to find month with least chance of a delay of any length happening\ndf['delay_ratio'] = df['num_of_delays_total'] / df['num_of_flights_total']\n\n# group by month\ninfo = df.groupby('month').agg(\n  delay_ratio = ('delay_ratio', 'mean')\n).reset_index()\n\n# fix missspelling of february\ninfo['month'] = info['month'].replace('Febuary', 'February')\n\n# orders months correctly\nmonth_order = ['January', 'February', 'March', 'April', 'May', 'June',\n               'July', 'August', 'September', 'October', 'November', 'December']\n\ninfo['month'] = pd.Categorical(info['month'], categories=month_order, ordered=True)\n\ninfo\n\n(\n  ggplot(info, aes(x='month', y='delay_ratio')) \n  + geom_bar(stat='identity', fill='grey', color='black')\n  + ylab(\"Delay Rate\")\n  + theme_classic()\n)",
     "crumbs": [
       "Data Exploration",
       "Project 3"
@@ -247,9 +421,42 @@
   {
     "objectID": "Competition/project1.html",
     "href": "Competition/project1.html",
-    "title": "Client Report - [Insert Project Title]",
+    "title": "Client Report - BYU-Idaho Players and Comparing Teams",
     "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "text": "Show the code\nimport pandas as pd \nimport numpy as np\nimport sqlite3\nfrom lets_plot import *\n\nLetsPlot.setup_html(isolated_frame=True)\nShow the code\n# Learn morea about Code Cells: https://quarto.org/docs/reference/cells/cells-jupyter.html\n\n# Include and execute your code here\nsqlite_file = 'lahmansbaseballdb.sqlite'\n# this file must be in the same location as your .qmd or .py file\ncon = sqlite3.connect(sqlite_file)",
+    "crumbs": [
+      "Competitions",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Competition/project1.html#question-1",
+    "href": "Competition/project1.html#question-1",
+    "title": "Client Report - BYU-Idaho Players and Comparing Teams",
+    "section": "QUESTION 1",
+    "text": "QUESTION 1\nWrite an SQL query that provides playerID, yearID, and batting average for players with at least 1 at bat that year. Sort the table from highest batting average to lowest, and then by playerid alphabetically. Show the top 5 results in your report.\nHere you can see that all of these players have a perfect batting average which is likely due to a low number of at bats which we cannot see from this query.\n\n\nShow the code\nq = '''\n      SELECT playerID,\n             yearID,\n             round(H*1.0 / AB, 3) as `Batting Average`\n      FROM batting\n      WHERE AB &gt; 0\n      ORDER BY `Batting Average` DESC, playerID\n      LIMIT 5\n    '''\nresults = pd.read_sql_query(q, con)\nresults\n\n\n\n\n\n\n\n\n\nplayerID\nyearID\nBatting Average\n\n\n\n\n0\naberal01\n1957\n1.0\n\n\n1\nabernte02\n1960\n1.0\n\n\n2\nabramge01\n1923\n1.0\n\n\n3\nacklefr01\n1964\n1.0\n\n\n4\nalanirj01\n2019\n1.0",
+    "crumbs": [
+      "Competitions",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Competition/project1.html#question-2",
+    "href": "Competition/project1.html#question-2",
+    "title": "Client Report - BYU-Idaho Players and Comparing Teams",
+    "section": "QUESTION 2",
+    "text": "QUESTION 2\nUse the same query as above, but only include players with at least 10 at bats that year. Print the top 5 results.\nHere since we raised the min at bats to 10, we can see a more realistic batting average with the best being 64%\n\n\nShow the code\nq = '''\n      SELECT playerID,\n             yearID,\n             round(H*1.0 / AB, 3) as `Batting Average`\n      FROM batting\n      WHERE AB &gt; 10\n      ORDER BY `Batting Average` DESC, playerID\n      LIMIT 5\n    '''\nresults = pd.read_sql_query(q, con)\nresults\n\n\n\n\n\n\n\n\n\nplayerID\nyearID\nBatting Average\n\n\n\n\n0\nnymanny01\n1974\n0.643\n\n\n1\ncarsoma01\n2013\n0.636\n\n\n2\nsilvech01\n1948\n0.571\n\n\n3\npuccige01\n1930\n0.563\n\n\n4\napplepe01\n1927\n0.545",
+    "crumbs": [
+      "Competitions",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Competition/project1.html#question-3",
+    "href": "Competition/project1.html#question-3",
+    "title": "Client Report - BYU-Idaho Players and Comparing Teams",
+    "section": "QUESTION 3",
+    "text": "QUESTION 3\nNow calculate the batting average for players over their entire careers (all years combined). Only include players with at least 100 at bats over their entire career, and print the top 5 results.\nHere we see a lifetime batting average for players with a minimum of 100 at bats in their career. This is the most accurate out of the three because the more data you have the more accurate it will get meaning gouping by year and setting a minimum of 100 at bats gives us a much more realistic batting average of 36%\n\n\nShow the code\nq = '''\n    SELECT \n        playerID,\n        ROUND(SUM(H) * 1.0 / SUM(AB), 3) AS batting_average\n    FROM Batting\n    GROUP BY playerID\n    HAVING SUM(AB) &gt;= 100\n    ORDER BY batting_average DESC, playerID ASC\n    LIMIT 5\n'''\nresults = pd.read_sql_query(q, con)\nresults\n\n\n\n\n\n\n\n\n\nplayerID\nbatting_average\n\n\n\n\n0\ncobbty01\n0.366\n\n\n1\nbarnero01\n0.360\n\n\n2\nhornsro01\n0.358\n\n\n3\njacksjo01\n0.356\n\n\n4\nmeyerle01\n0.356",
     "crumbs": [
       "Competitions",
       "Project 1"
@@ -258,9 +465,31 @@
   {
     "objectID": "Competition/project3.html",
     "href": "Competition/project3.html",
-    "title": "Client Report - [Insert Project Title]",
+    "title": "Client Report - Longevity of Baseball Players",
     "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "text": "Show the code\nimport pandas as pd \nimport numpy as np\nimport sqlite3\nfrom lets_plot import *\n\nLetsPlot.setup_html(isolated_frame=True)\nShow the code\n# Learn morea about Code Cells: https://quarto.org/docs/reference/cells/cells-jupyter.html\n\n# Include and execute your code here\nsqlite_file = 'lahmansbaseballdb.sqlite'\n# this file must be in the same location as your .qmd or .py file\ncon = sqlite3.connect(sqlite_file)",
+    "crumbs": [
+      "Competitions",
+      "Project 3"
+    ]
+  },
+  {
+    "objectID": "Competition/project3.html#question-1",
+    "href": "Competition/project3.html#question-1",
+    "title": "Client Report - Longevity of Baseball Players",
+    "section": "QUESTION 1",
+    "text": "QUESTION 1\nCalculate the average career length for players who have played at least 10 games in their career. Use years as the unit of measure.\nHere the table is formated so you are able ot see the the average career length is 6.8 years.\n\n\nShow the code\nq = '''\nSELECT ROUND(AVG(career_length), 3) AS `Average career length`\n  FROM (\n    SELECT\n      playerID,\n      (MAX(yearID) - MIN(yearID) + 1) AS career_length\n    FROM appearances\n    GROUP BY playerID\n    HAVING SUM(G_all) &gt;= 10\n)\n'''\nresults = pd.read_sql_query(q, con)\nresults\n\n\n\n\n\n\n\n\n\nAverage career length\n\n\n\n\n0\n6.842",
+    "crumbs": [
+      "Competitions",
+      "Project 3"
+    ]
+  },
+  {
+    "objectID": "Competition/project3.html#question-2",
+    "href": "Competition/project3.html#question-2",
+    "title": "Client Report - Longevity of Baseball Players",
+    "section": "QUESTION 2",
+    "text": "QUESTION 2\n\nIdentify the top 10 players with the longest careers (based on the number of years they played). Include their:\n\nplayerID\nfirst_name\nlast_name\ncareer_length\n\n\nThis is a table showing the players that have the largest span of time between the first game and their final game not showing players with the most seasons played.\n\n\nShow the code\nq = '''\n    SELECT\n      playerID,\n      nameFirst,\n      nameLast,\n      ROUND((julianday(finalGame) - julianday(debut) + 1) / 365.25, 3) AS   career_length_years\n    FROM people\n    ORDER BY career_length_years DESC\n    LIMIT 10;\n    '''\nresults = pd.read_sql_query(q, con)\nresults\n\n\n\n\n\n\n\n\n\nplayerID\nnameFirst\nnameLast\ncareer_length_years\n\n\n\n\n0\naltroni01\nNick\nAltrock\n35.217\n\n\n1\norourji01\nJim\nO'Rourke\n32.408\n\n\n2\nminosmi01\nMinnie\nMinoso\n31.466\n\n\n3\nolearch01\nCharley\nO'Leary\n30.464\n\n\n4\nlathaar01\nArlie\nLatham\n29.238\n\n\n5\nmcguide01\nDeacon\nMcGuire\n27.907\n\n\n6\njennihu01\nHughie\nJennings\n27.255\n\n\n7\neversjo01\nJohnny\nEvers\n27.099\n\n\n8\nryanno01\nNolan\nRyan\n27.034\n\n\n9\nstreega01\nGabby\nStreet\n27.020",
     "crumbs": [
       "Competitions",
       "Project 3"
@@ -269,19 +498,29 @@
   {
     "objectID": "exploration.html",
     "href": "exploration.html",
-    "title": "about me",
+    "title": "Comparing Delay Types",
     "section": "",
-    "text": "MarkDown Basics",
+    "text": "Show the code\nimport pandas as pd \nimport numpy as np\nimport sqlite3\nfrom lets_plot import *\n\nLetsPlot.setup_html(isolated_frame=True)\nShow the code\ndf = pd.read_json(\"https://github.com/byuidatascience/data4missing/raw/master/data-raw/flights_missing/flights_missing.json\")\n\ndf\n\n\n\n\n\n\n\n\n\nairport_code\nairport_name\nmonth\nyear\nnum_of_flights_total\nnum_of_delays_carrier\nnum_of_delays_late_aircraft\nnum_of_delays_nas\nnum_of_delays_security\nnum_of_delays_weather\nnum_of_delays_total\nminutes_delayed_carrier\nminutes_delayed_late_aircraft\nminutes_delayed_nas\nminutes_delayed_security\nminutes_delayed_weather\nminutes_delayed_total\n\n\n\n\n0\nATL\nAtlanta, GA: Hartsfield-Jackson Atlanta Intern...\nJanuary\n2005.0\n35048\n1500+\n-999\n4598\n10\n448\n8355\n116423.0\n104415\n207467.0\n297\n36931\n465533\n\n\n1\nDEN\nDenver, CO: Denver International\nJanuary\n2005.0\n12687\n1041\n928\n935\n11\n233\n3153\n53537.0\n70301\n36817.0\n363\n21779\n182797\n\n\n2\nIAD\n\nJanuary\n2005.0\n12381\n414\n1058\n895\n4\n61\n2430\nNaN\n70919\n35660.0\n208\n4497\n134881\n\n\n3\nORD\nChicago, IL: Chicago O'Hare International\nJanuary\n2005.0\n28194\n1197\n2255\n5415\n5\n306\n9178\n88691.0\n160811\n364382.0\n151\n24859\n638894\n\n\n4\nSAN\nSan Diego, CA: San Diego International\nJanuary\n2005.0\n7283\n572\n680\n638\n7\n56\n1952\n27436.0\n38445\n21127.0\n218\n4326\n91552\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n919\nIAD\nWashington, DC: Washington Dulles International\nDecember\n2015.0\n2799\n182\n183\n61\n0\n17\n443\nNaN\n15438\n2826.0\n0\n1825\n31164\n\n\n920\nORD\nChicago, IL: Chicago O'Hare International\nDecember\n2015.0\n25568\n923\n1755\n1364\n11\n180\n4233\n80962.0\n132055\n72045.0\n435\n22459\n307956\n\n\n921\nSAN\nSan Diego, CA: San Diego International\nn/a\n2015.0\n6231\n480\n606\n256\n5\n37\n1383\n25402.0\n35796\n9038.0\n161\n2742\n73139\n\n\n922\nSFO\nSan Francisco, CA: San Francisco International\nDecember\n2015.0\n13833\n757\n1180\n2372\n9\n147\n4465\n55283.0\n96703\n193525.0\n285\n13788\n359584\n\n\n923\nSLC\nSalt Lake City, UT: Salt Lake City International\nDecember\n2015.0\n8804\n483\n796\n404\n5\n56\n1745\n37354.0\n49549\n13515.0\n158\n6693\n107269\n\n\n\n\n924 rows × 17 columns",
     "crumbs": [
       "Data Exploration"
     ]
   },
   {
-    "objectID": "exploration.html#title-2-header",
-    "href": "exploration.html#title-2-header",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics",
+    "objectID": "exploration.html#question-1",
+    "href": "exploration.html#question-1",
+    "title": "Comparing Delay Types",
+    "section": "QUESTION 1",
+    "text": "QUESTION 1\nWhich delay is the worst delay? Build on the analysis you already did regarding Weahter Delay. This time though, instead of comparing one type of delay across multiple airports, we want to compare Weather Delay (an involved calculation that you already did in a previous task) with Carrier Delay and Security Delay (both of which are in the dataset and don’t need fancy calculations like Weather did). Compare the proportion of delay for each of the three categories in a Chart and a Table. Describe your results.\nHere we can se that weather is the worst delay, with carrier behind it and security barely even an part of delays.\n\n\nShow the code\nmissing_vals = [\"\", \"n/a\", -999]\ndf = df.replace(missing_vals, np.nan)\n\ndf['month'] = df['month'].ffill()\ndf['year'] = df['year'].ffill()\n\ndf[\"num_of_delays_carrier\"] = df[\"num_of_delays_carrier\"].replace(\"1500+\", 1750)\ndf[\"num_of_delays_carrier\"] = pd.to_numeric(df[\"num_of_delays_carrier\"])\n\ndf['num_of_delays_late_aircraft'] = df['num_of_delays_late_aircraft'].fillna(df['num_of_delays_late_aircraft'].mean())\n\nmonth_map = {\n    'January': 1, 'February': 2, 'March': 3,\n    'April': 4, 'May': 5, 'June': 6,\n    'July': 7, 'August': 8, 'September': 9,\n    'October': 10, 'November': 11, 'December': 12\n}\n\nmonth_num = df['month'].map(month_map)\n\ndf['nas_weather_fraction'] = np.where(month_num.between(4, 8), 0.40, 0.65)\n\ndf['weather_delay_total'] = (\n    df['num_of_delays_weather'] +\n    0.30 * df['num_of_delays_late_aircraft'] +\n    df['num_of_delays_nas'] * df['nas_weather_fraction']\n)\n\ndelays_df = df[[\"airport_code\", \"num_of_flights_total\", \"num_of_delays_carrier\", \"num_of_delays_security\", \"weather_delay_total\"]].copy()\ndelays_df = delays_df.rename(columns={\n    \"num_of_delays_carrier\": \"Carrier\",\n    \"num_of_delays_security\": \"Security\",\n    \"weather_delay_total\": \"Weather\"\n})\n\nlong_df = pd.melt(delays_df,\n                  id_vars=[\"airport_code\", \"num_of_flights_total\"],\n                  value_vars=[\"Carrier\", \"Security\", \"Weather\"],\n                  var_name=\"DelayType\",\n                  value_name=\"NumDelays\")\nlong_df[\"PropDelayed\"] = long_df[\"NumDelays\"] / long_df[\"num_of_flights_total\"]\n\ndisplay(long_df.groupby(\"DelayType\")[\"PropDelayed\"].mean().round(4))\n\n(\nggplot(long_df, aes(x='DelayType', y='PropDelayed', fill='DelayType'))\n    +   geom_bar(stat='identity')\n    +   ggtitle(\"Proportion of Delays by Type Across All Airports\")\n    +   ylab(\"Proportion of Flights Delayed\")\n)\n\n\nDelayType\nCarrier     0.0501\nSecurity    0.0004\nWeather     0.0666\nName: PropDelayed, dtype: float64",
+    "crumbs": [
+      "Data Exploration"
+    ]
+  },
+  {
+    "objectID": "exploration.html#question-2",
+    "href": "exploration.html#question-2",
+    "title": "Comparing Delay Types",
+    "section": "QUESTION 2",
+    "text": "QUESTION 2\nCreate another chart that shows the proportion of delays for each reason (Weather, Carrier, and Security) across all 7 airports. Describe your results.\nHere is a graph that shows all the proportion that each delay happens acrros the 7 airports in the database.\n\n\nShow the code\n# Delay types per airport\nggplot(long_df, aes(x='airport_code', y='PropDelayed', fill='DelayType')) + \\\n    geom_bar(stat='identity', position='dodge') + \\\n    ggtitle(\"Delay Proportions by Type and Airport\") + \\\n    xlab(\"Airport\") + ylab(\"Proportion of Flights Delayed\")",
     "crumbs": [
       "Data Exploration"
     ]
@@ -289,9 +528,20 @@
   {
     "objectID": "Full_Stack/project2.html",
     "href": "Full_Stack/project2.html",
-    "title": "Client Report - [Insert Project Title]",
+    "title": "Client Report - Recoding Range Variables: Smarter than Dummy Encoding",
     "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "text": "Show the code\nimport pandas as pd \nimport numpy as np\nfrom lets_plot import *\n# add the additional libraries you need to import for ML here\n\nLetsPlot.setup_html(isolated_frame=True)\nfrom sklearn.preprocessing import OneHotEncoder\nShow the code\ndf = pd.read_csv('../StarWars.csv', encoding='ISO-8859-1')\n\ncol_rename = {\n  'RespondentID': 'id',\n  'Have you seen any of the 6 films in the Star Wars franchise?': 'seen_sw',\n  'Do you consider yourself to be a fan of the Star Wars film franchise?': 'fan_sw',\n  'Which of the following Star Wars films have you seen? Please select all that apply.': 'seen_1',\n  'Unnamed: 4': 'seen_2',\n  'Unnamed: 5': 'seen_3',\n  'Unnamed: 6': 'seen_4',\n  'Unnamed: 7': 'seen_5',\n  'Unnamed: 8': 'seen_6',\n  'Please rank the Star Wars films in order of preference with 1 being your favorite film in the franchise and 6 being your least favorite film.': 'rank_1',\n  'Unnamed: 10': 'rank_2',\n  'Unnamed: 11': 'rank_3',\n  'Unnamed: 12': 'rank_4',\n  'Unnamed: 13': 'rank_5',\n  'Unnamed: 14': 'rank_6',\n  'Please state whether you view the following characters favorably, unfavorably, or are unfamiliar with him/her.': 'HanSolo_rank',\n  'Unnamed: 16': 'LukeSkywalker_rank',\n  'Unnamed: 17': 'PrincessLeia_rank',\n  'Unnamed: 18': 'AnakinSkywalker_rank',\n  'Unnamed: 19': 'ObiWan_rank',\n  'Unnamed: 20': 'EmperorPalpatine_rank',\n  'Unnamed: 21': 'DarthVader_rank',\n  'Unnamed: 22': 'LandoCalrissian_rank',\n  'Unnamed: 23': 'BobaFett_rank',\n  'Unnamed: 24': 'C-3P0_rank',\n  'Unnamed: 25': 'R2D2_rank',\n  'Unnamed: 26': 'JarJar_rank',\n  'Unnamed: 27': 'PadmeAmidala_rank',\n  'Unnamed: 28': 'Yoda_rank',\n  'Which character shot first?': 'character_shot_first',\n  'Are you familiar with the Expanded Universe?': 'know_expanded',\n  'Do you consider yourself to be a fan of the Expanded Universe?ï¿½ï¿½': 'fan_of_expanded',\n  'Do you consider yourself to be a fan of the Star Trek franchise?': 'st_fan',\n  'Gender': 'gender',\n  'Age': 'age',\n  'Household Income': 'house_income',\n  'Education': 'education',\n  'Location (Census Region)': 'census_location'\n}\n\ndf.rename(columns=col_rename, inplace=True)\ndf.drop(index=0, inplace=True)\n\nfor col in ['seen_1', 'seen_2', 'seen_3', 'seen_4', 'seen_5', 'seen_6']:\n    df[col] = df[col].apply(lambda x: 1 if not pd.isna(x) else 0)\n\ndf\n\n\n\n\n\n\n\n\n\nid\nseen_sw\nfan_sw\nseen_1\nseen_2\nseen_3\nseen_4\nseen_5\nseen_6\nrank_1\n...\nYoda_rank\ncharacter_shot_first\nknow_expanded\nfan_of_expanded\nst_fan\ngender\nage\nhouse_income\neducation\ncensus_location\n\n\n\n\n1\n3.292880e+09\nYes\nYes\n1\n1\n1\n1\n1\n1\n3\n...\nVery favorably\nI don't understand this question\nYes\nNo\nNo\nMale\n18-29\nNaN\nHigh school degree\nSouth Atlantic\n\n\n2\n3.292880e+09\nNo\nNaN\n0\n0\n0\n0\n0\n0\nNaN\n...\nNaN\nNaN\nNaN\nNaN\nYes\nMale\n18-29\n$0 - $24,999\nBachelor degree\nWest South Central\n\n\n3\n3.292765e+09\nYes\nNo\n1\n1\n1\n0\n0\n0\n1\n...\nUnfamiliar (N/A)\nI don't understand this question\nNo\nNaN\nNo\nMale\n18-29\n$0 - $24,999\nHigh school degree\nWest North Central\n\n\n4\n3.292763e+09\nYes\nYes\n1\n1\n1\n1\n1\n1\n5\n...\nVery favorably\nI don't understand this question\nNo\nNaN\nYes\nMale\n18-29\n$100,000 - $149,999\nSome college or Associate degree\nWest North Central\n\n\n5\n3.292731e+09\nYes\nYes\n1\n1\n1\n1\n1\n1\n5\n...\nSomewhat favorably\nGreedo\nYes\nNo\nNo\nMale\n18-29\n$100,000 - $149,999\nSome college or Associate degree\nWest North Central\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n1182\n3.288389e+09\nYes\nYes\n1\n1\n1\n1\n1\n1\n5\n...\nVery favorably\nHan\nNo\nNaN\nYes\nFemale\n18-29\n$0 - $24,999\nSome college or Associate degree\nEast North Central\n\n\n1183\n3.288379e+09\nYes\nYes\n1\n1\n1\n1\n1\n1\n4\n...\nVery favorably\nI don't understand this question\nNo\nNaN\nYes\nFemale\n30-44\n$50,000 - $99,999\nBachelor degree\nMountain\n\n\n1184\n3.288375e+09\nNo\nNaN\n0\n0\n0\n0\n0\n0\nNaN\n...\nNaN\nNaN\nNaN\nNaN\nNo\nFemale\n30-44\n$50,000 - $99,999\nBachelor degree\nMiddle Atlantic\n\n\n1185\n3.288373e+09\nYes\nYes\n1\n1\n1\n1\n1\n1\n4\n...\nVery favorably\nHan\nNo\nNaN\nYes\nFemale\n45-60\n$100,000 - $149,999\nSome college or Associate degree\nEast North Central\n\n\n1186\n3.288373e+09\nYes\nNo\n1\n1\n0\n0\n1\n1\n6\n...\nVery unfavorably\nI don't understand this question\nNo\nNaN\nNo\nFemale\n&gt; 60\n$50,000 - $99,999\nGraduate degree\nPacific\n\n\n\n\n1186 rows × 38 columns",
+    "crumbs": [
+      "Full Stack",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "Full_Stack/project2.html#question-1",
+    "href": "Full_Stack/project2.html#question-1",
+    "title": "Client Report - Recoding Range Variables: Smarter than Dummy Encoding",
+    "section": "QUESTION 1",
+    "text": "QUESTION 1\n\nClean and format the data so that it can be used in a machine learning model. As you format the data, you should complete each item listed below. In your final report provide an excerpt of the reformatted data with a short description of the changes made.\n\nCreate a new column that converts the age ranges to a single number. Drop the age range categorical column\n\nCreate a new column that converts the education groupings to a single number. Drop the school categorical column\n\nCreate a new column that converts the income ranges to a single number. Drop the income range categorical column\n\nCreate your target (also known as “y” or “label”) column based on the new income range column\n\nEncode favorability ratings as a number. Remove the favorability categorical columns.\nOne-hot encode all remaining categorical columns\n\n\ntype your write-up and analysis here\n\n\nShow the code\nage_map = {\n    '18-29': 23.5,\n    '30-44': 37,\n    '45-60': 52.5,\n    '&gt; 60': 65\n}\ndf['age_num'] = df['age'].map(age_map)\ndf.drop(columns='age', inplace=True)\n\neducation_map = {\n    'Less than high school degree': 0,\n    'High school degree': 1,\n    'Some college or Associate degree': 2,\n    'Bachelor degree': 3,\n    'Graduate degree': 4\n}\ndf['education_num'] = df['education'].map(education_map)\ndf.drop(columns='education', inplace=True)\n\nincome_map = {\n    '$0 - $24,999': 12500,\n    '$25,000 - $49,999': 37500,\n    '$50,000 - $99,999': 75000,\n    '$100,000 - $149,999': 125000,\n    '$150,000+': 175000\n}\ndf['income_num'] = df['house_income'].map(income_map)\ndf.drop(columns='house_income', inplace=True)\n\ndf['target'] = df['income_num'].apply(lambda x: 1 if x &gt;= 100000 else 0)\n\nfavor_map = {\n    'Very favorably': 2,\n    'Somewhat favorably': 1,\n    'Unfamiliar (N/A)': 0,\n    'Neither favorably nor unfavorably (neutral)': 0,\n    'Somewhat unfavorably': -1,\n    'Very unfavorably': -2,\n    np.nan: 0\n}\n\nfavor_cols = [col for col in df.columns if '_rank' in col]\nfor col in favor_cols:\n    df[col.replace('_rank', '_score')] = df[col].map(favor_map)\n\ndf.drop(columns=favor_cols, inplace=True)\n\nnum_cols = ['age_num', 'education_num', 'income_num'] + [f'rank_{i}' for i in range(1,7)]\ndf[num_cols] = df[num_cols].apply(pd.to_numeric, errors='coerce')\ndf[num_cols] = df[num_cols].fillna(df[num_cols].median())\n\ncat_cols = ['seen_sw', 'fan_sw', 'character_shot_first', 'know_expanded', 'fan_of_expanded', 'st_fan', 'gender', 'census_location']\nfor col in cat_cols:\n    if col in df.columns:\n        df[col] = df[col].fillna('Missing')\n\ncat_cols = ['seen_sw', 'fan_sw', 'character_shot_first', 'know_expanded', 'fan_of_expanded', 'st_fan', 'gender', 'census_location']\n\nencoder = OneHotEncoder(drop='first', dtype=int, sparse_output=False)\nencoded_array = encoder.fit_transform(df[cat_cols])\n\nencoded_df = pd.DataFrame(\n    encoded_array,\n    columns=encoder.get_feature_names_out(cat_cols),\n    index=df.index\n)\n\ndf.drop(columns=cat_cols, inplace=True)\n\ndf = pd.concat([df, encoded_df], axis=1)\n\nfor col in [f'rank_{i}' for i in range(1,7)]:\n    df[col] = df[col].astype(int)\ndf['education_num'] = df['education_num'].astype(int)\ndf['age_num'] = df['age_num'].astype(int)\n\ndf.drop(columns='id', inplace=True)\n\ndf\n\n\n\n\n\n\n\n\n\nseen_1\nseen_2\nseen_3\nseen_4\nseen_5\nseen_6\nrank_1\nrank_2\nrank_3\nrank_4\n...\ngender_Missing\ncensus_location_East South Central\ncensus_location_Middle Atlantic\ncensus_location_Missing\ncensus_location_Mountain\ncensus_location_New England\ncensus_location_Pacific\ncensus_location_South Atlantic\ncensus_location_West North Central\ncensus_location_West South Central\n\n\n\n\n1\n1\n1\n1\n1\n1\n1\n3\n2\n1\n4\n...\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n\n\n2\n0\n0\n0\n0\n0\n0\n4\n4\n5\n3\n...\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n\n\n3\n1\n1\n1\n0\n0\n0\n1\n2\n3\n4\n...\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n\n\n4\n1\n1\n1\n1\n1\n1\n5\n6\n1\n2\n...\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n\n\n5\n1\n1\n1\n1\n1\n1\n5\n4\n6\n2\n...\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n1182\n1\n1\n1\n1\n1\n1\n5\n4\n6\n3\n...\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n\n\n1183\n1\n1\n1\n1\n1\n1\n4\n5\n6\n2\n...\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n\n\n1184\n0\n0\n0\n0\n0\n0\n4\n4\n5\n3\n...\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n\n\n1185\n1\n1\n1\n1\n1\n1\n4\n3\n6\n5\n...\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n\n\n1186\n1\n1\n0\n0\n1\n1\n6\n1\n2\n3\n...\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n\n\n\n\n1186 rows × 53 columns",
     "crumbs": [
       "Full Stack",
       "Project 2"
@@ -314,9 +564,31 @@
   {
     "objectID": "Machine_Learning/project2.html",
     "href": "Machine_Learning/project2.html",
-    "title": "Client Report - [Insert Project Title]",
+    "title": "Client Report -How good is it, really?",
     "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "text": "Show the code\nimport pandas as pd \nimport numpy as np\nfrom lets_plot import *\n# add the additional libraries you need to import for ML here\n\nLetsPlot.setup_html(isolated_frame=True)\n\nfrom sklearn.model_selection import train_test_split\n\nfrom sklearn.ensemble import RandomForestClassifier\n\nfrom sklearn.metrics import classification_report\nShow the code\ndf = pd.read_csv('https://raw.githubusercontent.com/byuidatascience/data4dwellings/master/data-raw/dwellings_ml/dwellings_ml.csv')\ndf\n\nX = df.drop(columns=['before1980', 'yrbuilt', 'parcel'])\ny = df.before1980\n\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)\n\nmodel = RandomForestClassifier()\nmodel.fit(X_train, y_train)\n\npred = model.predict(X_test)",
+    "crumbs": [
+      "Machine Learning",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "Machine_Learning/project2.html#question-1",
+    "href": "Machine_Learning/project2.html#question-1",
+    "title": "Client Report -How good is it, really?",
+    "section": "QUESTION 1",
+    "text": "QUESTION 1\nDescribe the quality of your classification model using 2-3 different evaluation metrics. You also need to explain how to interpret each of the evaluation metrics you use.\nBelow we can see the accuracy, precision, recall, as well as F1 score of our model. Accuracy is how often the predictions were correct, precision is how many of the predicted “yes” were actually a “yes”, and recall is, of all the homes built before 1980, how many were correctly predicted. F1 score is a combination of precision and recall, making it a great option in many cases to see the true performance of your model.\n\n\nShow the code\nfrom sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score\n\naccuracy = accuracy_score(y_test, pred)\nprecision = precision_score(y_test, pred)\nrecall = recall_score(y_test, pred)\nf1 = f1_score(y_test, pred)\n\nprint(f\"Accuracy: {accuracy:.3f}\")\nprint(f\"Precision: {precision:.3f}\")\nprint(f\"Recall: {recall:.3f}\")\nprint(f\"F1 Score: {f1:.3f}\")\n\n\nAccuracy: 0.926\nPrecision: 0.939\nRecall: 0.943\nF1 Score: 0.941",
+    "crumbs": [
+      "Machine Learning",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "Machine_Learning/project2.html#question-2",
+    "href": "Machine_Learning/project2.html#question-2",
+    "title": "Client Report -How good is it, really?",
+    "section": "QUESTION 2",
+    "text": "QUESTION 2\nJustify your classification model by discussing the most important features selected by your model. This discussion should include a feature importance chart and a description of the features.\nIn the chart below, you can see a chart that displays the top 10 most important features in order from most to least. Livearea is the number one feature used to calculate whether a house is built before 1980 or not.\n\n\nShow the code\nimport matplotlib.pyplot as plt\n\nimportances = model.feature_importances_\nfeatures = X.columns\nfeat_df = pd.DataFrame({'Feature': features, 'Importance': importances})\nfeat_df = feat_df.sort_values('Importance', ascending=False)\n\n# Plot\nplt.figure(figsize=(10, 6))\nplt.barh(feat_df['Feature'][:10][::-1], feat_df['Importance'][:10][::-1])\nplt.xlabel(\"Feature Importance\")\nplt.title(\"Top 10 Important Features\")\nplt.tight_layout()\nplt.show()",
     "crumbs": [
       "Machine Learning",
       "Project 2"
@@ -325,19 +597,9 @@
   {
     "objectID": "ml.html",
     "href": "ml.html",
-    "title": "about me",
+    "title": "Your_Name - Data Science Portfolio",
     "section": "",
-    "text": "MarkDown Basics",
-    "crumbs": [
-      "Machine Learning"
-    ]
-  },
-  {
-    "objectID": "ml.html#title-2-header",
-    "href": "ml.html#title-2-header",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics",
+    "text": "import pandas as pd \nimport numpy as np\nfrom lets_plot import *\n# add the additional libraries you need to import for ML here\n\nLetsPlot.setup_html(isolated_frame=True)\n\nfrom sklearn.model_selection import train_test_split\n\nfrom sklearn.metrics import classification_report\n\nfrom sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier\n\nfrom sklearn.tree import DecisionTreeClassifier\n\nimport matplotlib.pyplot as plt\n\n\n# import your data here using pandas and the URL\ndf = pd.read_csv('https://raw.githubusercontent.com/byuidatascience/data4dwellings/master/data-raw/dwellings_ml/dwellings_ml.csv')\n\nRepeat the classification model using 3 different algorithms. Display their Feature Importance, and Classification Report. Explian the differences between the models and which one you would recommend to the Client.\nBelow you can see three models random forest, gradient boosting, and decision tree. out of these three models, random forest produces the best results and would be the best choice for this model. In the feature importance charts, you can see that the random forest model relies the most on live area while the other two both use if the house is one story for their most important feature.\n\n# Include and execute your code here\nX = df.drop(columns=['before1980', 'yrbuilt', 'parcel'])\ny = df.before1980\n\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)\n\n# model 1\nmodel = RandomForestClassifier()\nmodel.fit(X_train, y_train)\n\npred = model.predict(X_test)\n\nprint(classification_report(y_test, pred))\n\nimportances = model.feature_importances_\nfeatures = X.columns\nfeat_df = pd.DataFrame({'Feature': features, 'Importance': importances})\nfeat_df = feat_df.sort_values('Importance', ascending=False)\n\n# Plot\nplt.figure(figsize=(10, 6))\nplt.barh(feat_df['Feature'][:10][::-1], feat_df['Importance'][:10][::-1])\nplt.xlabel(\"Feature Importance\")\nplt.title(\"Top 10 Important Features\")\nplt.tight_layout()\nplt.show()\n\n# model2\nmodel = GradientBoostingClassifier()\nmodel.fit(X_train, y_train)\n\npred = model.predict(X_test)\n\nprint(classification_report(y_test, pred))\n\nimportances = model.feature_importances_\nfeatures = X.columns\nfeat_df = pd.DataFrame({'Feature': features, 'Importance': importances})\nfeat_df = feat_df.sort_values('Importance', ascending=False)\n\n# Plot\nplt.figure(figsize=(10, 6))\nplt.barh(feat_df['Feature'][:10][::-1], feat_df['Importance'][:10][::-1])\nplt.xlabel(\"Feature Importance\")\nplt.title(\"Top 10 Important Features\")\nplt.tight_layout()\nplt.show()\n\n# model3\nmodel = DecisionTreeClassifier()\nmodel.fit(X_train, y_train)\n\npred = model.predict(X_test)\n\nprint(classification_report(y_test, pred))\n\nimportances = model.feature_importances_\nfeatures = X.columns\nfeat_df = pd.DataFrame({'Feature': features, 'Importance': importances})\nfeat_df = feat_df.sort_values('Importance', ascending=False)\n\n# Plot\nplt.figure(figsize=(10, 6))\nplt.barh(feat_df['Feature'][:10][::-1], feat_df['Importance'][:10][::-1])\nplt.xlabel(\"Feature Importance\")\nplt.title(\"Top 10 Important Features\")\nplt.tight_layout()\nplt.show()\n\n              precision    recall  f1-score   support\n\n           0       0.91      0.90      0.90      1727\n           1       0.94      0.94      0.94      2856\n\n    accuracy                           0.93      4583\n   macro avg       0.92      0.92      0.92      4583\nweighted avg       0.93      0.93      0.93      4583\n\n\n\n\n\n\n\n\n\n\n              precision    recall  f1-score   support\n\n           0       0.88      0.84      0.86      1727\n           1       0.91      0.93      0.92      2856\n\n    accuracy                           0.90      4583\n   macro avg       0.90      0.89      0.89      4583\nweighted avg       0.90      0.90      0.90      4583\n\n\n\n\n\n\n\n\n\n\n              precision    recall  f1-score   support\n\n           0       0.87      0.88      0.87      1727\n           1       0.93      0.92      0.92      2856\n\n    accuracy                           0.90      4583\n   macro avg       0.90      0.90      0.90      4583\nweighted avg       0.90      0.90      0.90      4583\n\n\n\n\n\n\n\n\n\n\nJoin the dwellings_neighborhoods_ml.csv data to the dwelling_ml.csv on the parcel column to create a new dataset. Duplicate the code for the model you recommended in the stretch question above and update it to use this data. Explain the differences and if this changes the model you recomend to the Client.\nWith the extra data added to help train the model, our models accuray went from good to excelent. It increased our f1 score from .92 to .97 which is great. This does not change the reccomended model but is a helpfull change to give the model more information for more accurate predictions.\n\nneighborhood_df = pd.read_csv('https://raw.githubusercontent.com/byuidatascience/data4dwellings/master/data-raw/dwellings_neighborhoods_ml/dwellings_neighborhoods_ml.csv')\nmerged_df = pd.merge(df, neighborhood_df, on='parcel')\n\nX_merged = merged_df.drop(columns=['before1980', 'yrbuilt', 'parcel'])\ny_merged = merged_df.before1980\n\nX_train, X_test, y_train, y_test = train_test_split(X_merged, y_merged, test_size=0.2, random_state=1)\n\nmodel = RandomForestClassifier()\nmodel.fit(X_train, y_train)\npred = model.predict(X_test)\n\nprint(classification_report(y_test, pred))\n\n              precision    recall  f1-score   support\n\n           0       0.95      0.97      0.96      2057\n           1       0.98      0.97      0.97      3536\n\n    accuracy                           0.97      5593\n   macro avg       0.96      0.97      0.97      5593\nweighted avg       0.97      0.97      0.97      5593\n\n\n\nCan you build a model that predicts the year a house was built? Note this is a regression ML model, not a classifier. Report appropriate evaluation metrics for the model. Explain the model and the evaluation metrics you used to determine if the model is good.\nThis model has on mae of 12 which means on average its year built prediction is 12 years off. The RMSE is 18 which isnt much higher than mae which is good, it shows that we dont have many outliers. R2 score is a score from 0 to 1 that is another metric for a regression models performance.\n\nfrom sklearn.ensemble import GradientBoostingRegressor\nfrom sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score\n\nX_merged = merged_df.drop(columns=['before1980', 'yrbuilt', 'parcel'])\ny_merged = merged_df.yrbuilt\n\nX_train, X_test, y_train, y_test = train_test_split(X_merged, y_merged, test_size=0.2, random_state=1)\n\nmodel = GradientBoostingRegressor()\nmodel.fit(X_train, y_train)\n\npred = model.predict(X_test)\n\nmae = mean_absolute_error(y_test, pred)\nrmse = mean_squared_error(y_test, pred, squared=False)\nr2 = r2_score(y_test, pred)\n\nprint(f\"Regression Performance:\")\nprint(f\"MAE: {mae:.2f}\")\nprint(f\"RMSE: {rmse:.2f}\")\nprint(f\"R2 Score: {r2:.3f}\")\n\nRegression Performance:\nMAE: 12.78\nRMSE: 18.31\nR2 Score: 0.754\n\n\nC:\\Users\\zwmcl\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\sklearn\\metrics\\_regression.py:492: FutureWarning: 'squared' is deprecated in version 1.4 and will be removed in 1.6. To calculate the root mean squared error, use the function'root_mean_squared_error'.\n  warnings.warn(\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Machine Learning"
     ]
@@ -345,9 +607,64 @@
   {
     "objectID": "Story_Telling/project1.html",
     "href": "Story_Telling/project1.html",
-    "title": "Client Report - [Insert Project Title]",
+    "title": "Client Report - Exploring Names",
     "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "text": "Show the code\nimport pandas as pd\nimport numpy as np\nfrom lets_plot import *\n\nLetsPlot.setup_html(isolated_frame=True)\nShow the code\n# Learn morea about Code Cells: https://quarto.org/docs/reference/cells/cells-jupyter.html\n\n# Include and execute your code here\ndf = pd.read_csv(\"https://github.com/byuidatascience/data4names/raw/master/data-raw/names_year/names_year.csv\")",
+    "crumbs": [
+      "Story Telling",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Story_Telling/project1.html#question-1",
+    "href": "Story_Telling/project1.html#question-1",
+    "title": "Client Report - Exploring Names",
+    "section": "QUESTION 1",
+    "text": "QUESTION 1\nWhat was the earliest year that the name ‘Felisha’ was used?\nThe name Felisha was first used in 1954\n\n\nShow the code\n# Q1\ndf[df['name'] == 'Felisha']['year'].min()\n\n\nnp.int64(1964)",
+    "crumbs": [
+      "Story Telling",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Story_Telling/project1.html#question-2",
+    "href": "Story_Telling/project1.html#question-2",
+    "title": "Client Report - Exploring Names",
+    "section": "QUESTION 2",
+    "text": "QUESTION 2\nWhat year had the most babies named ‘David’? How many babies were named ‘David’ that year?\nThe year with the most babies born named David was in 1910\n\n\nShow the code\n# Q2\ndavid_df = df[df['name'] == 'David']\nmax_row = david_df.loc[david_df['Total'].idxmax()]\nmost_common_year = max_row['year']\n\nprint(f\"Year: {most_common_year}\")\n\n\nYear: 1955",
+    "crumbs": [
+      "Story Telling",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Story_Telling/project1.html#question-3",
+    "href": "Story_Telling/project1.html#question-3",
+    "title": "Client Report - Exploring Names",
+    "section": "QUESTION 3",
+    "text": "QUESTION 3\nWhat year did your name hit its peak? How many babies were named your name in that year?\nThe year 1913 is when Zachary became most common\n\n\nShow the code\n# Q3\ndf[df['name'] == 'Zachary'].groupby('year').size().idxmax()\n\n\nnp.int64(1913)",
+    "crumbs": [
+      "Story Telling",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Story_Telling/project1.html#question-4",
+    "href": "Story_Telling/project1.html#question-4",
+    "title": "Client Report - Exploring Names",
+    "section": "QUESTION 4",
+    "text": "QUESTION 4\nHow many babies are named ‘Oliver’ in the state of Utah for all years?\ntype your results and analysis here\n\n\nShow the code\n# Q4\ndf[df['name'] == 'Oliver']['UT'].sum()\n\n\nnp.float64(1704.0)",
+    "crumbs": [
+      "Story Telling",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Story_Telling/project1.html#question-5",
+    "href": "Story_Telling/project1.html#question-5",
+    "title": "Client Report - Exploring Names",
+    "section": "QUESTION 5",
+    "text": "QUESTION 5\nIn the most recent year, what was the most common female name in Utah?\nI found that Emma was the most common name in Utag in 2015 which is the latest year in the databse\n\n\nShow the code\n# Q5\nmost_recent_year = df['year'].max()\nrecent_data = df[df['year'] == most_recent_year]\nprint(recent_data[['name', 'UT']].sort_values('UT', ascending=False).iloc[1])\n\n\nname     Emma\nUT      281.0\nName: 123466, dtype: object",
     "crumbs": [
       "Story Telling",
       "Project 1"
@@ -356,9 +673,31 @@
   {
     "objectID": "Story_Telling/project3.html",
     "href": "Story_Telling/project3.html",
-    "title": "Client Report - [Insert Project Title]",
+    "title": "Client Report - Famous Names",
     "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "text": "Show the code\nimport pandas as pd\nimport numpy as np\nfrom lets_plot import *\n\nLetsPlot.setup_html(isolated_frame=True)\nShow the code\n# Learn morea about Code Cells: https://quarto.org/docs/reference/cells/cells-jupyter.html\n\n# Include and execute your code here\ndf = pd.read_csv(\"https://github.com/byuidatascience/data4names/raw/master/data-raw/names_year/names_year.csv\")",
+    "crumbs": [
+      "Story Telling",
+      "Project 3"
+    ]
+  },
+  {
+    "objectID": "Story_Telling/project3.html#question-1",
+    "href": "Story_Telling/project3.html#question-1",
+    "title": "Client Report - Famous Names",
+    "section": "QUESTION 1",
+    "text": "QUESTION 1\n\nMary, Martha, Peter, and Paul are all Christian names. From 1920 - 2000, compare the name usage of each of the four names in a single chart. What trends do you notice? You must provide a chart. The years labels on your charts should not include a comma.\nThese names all peaked in popularity in the 50s and in the 70s all leveled still not being uncommon.\n\n\nShow the code\n# Q1\nfamouseNames = (df.query(\"name in ['Mary', 'Martha', 'Peter', 'Paul'] and 1920 &lt;= year &lt;= 2000\"))\n\nfamouseNames\n\n\n\n\n\n\n\n\n\nname\nyear\nAK\nAL\nAR\nAZ\nCA\nCO\nCT\nDC\n...\nTN\nTX\nUT\nVA\nVT\nWA\nWI\nWV\nWY\nTotal\n\n\n\n\n264124\nMartha\n1920\n11.0\n258.0\n224.0\n21.0\n131.0\n66.0\n55.0\n20.0\n...\n416.0\n418.0\n16.0\n269.0\n11.0\n73.0\n116.0\n172.0\n11.0\n8705.0\n\n\n264125\nMartha\n1921\n0.0\n307.0\n216.0\n18.0\n161.0\n70.0\n57.0\n34.0\n...\n420.0\n478.0\n20.0\n297.0\n13.0\n57.0\n101.0\n204.0\n9.0\n9254.0\n\n\n264126\nMartha\n1922\n9.0\n326.0\n219.0\n23.0\n126.0\n67.0\n56.0\n17.0\n...\n421.0\n501.0\n18.0\n273.0\n14.0\n39.0\n82.0\n225.0\n5.0\n9018.0\n\n\n264127\nMartha\n1923\n0.0\n341.0\n236.0\n27.0\n159.0\n63.0\n38.0\n24.0\n...\n442.0\n233.0\n22.0\n293.0\n11.0\n45.0\n72.0\n210.0\n10.0\n8731.0\n\n\n264128\nMartha\n1924\n0.0\n342.0\n257.0\n39.0\n166.0\n58.0\n49.0\n23.0\n...\n507.0\n487.0\n15.0\n155.0\n15.0\n41.0\n72.0\n196.0\n20.0\n9163.0\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n303691\nPeter\n1996\n0.0\n22.0\n8.0\n42.0\n501.0\n55.0\n134.0\n22.0\n...\n30.0\n183.0\n27.0\n103.0\n20.0\n109.0\n114.0\n8.0\n0.0\n4069.0\n\n\n303692\nPeter\n1997\n17.0\n19.0\n5.0\n47.0\n476.0\n44.0\n111.0\n25.0\n...\n24.0\n175.0\n27.0\n73.0\n17.0\n74.0\n98.0\n0.0\n0.0\n3821.0\n\n\n303693\nPeter\n1998\n14.0\n21.0\n8.0\n42.0\n471.0\n42.0\n104.0\n14.0\n...\n27.0\n134.0\n41.0\n78.0\n12.0\n98.0\n89.0\n0.0\n0.0\n3377.0\n\n\n303694\nPeter\n1999\n15.0\n24.0\n9.0\n48.0\n402.0\n66.0\n101.0\n23.0\n...\n30.0\n138.0\n26.0\n105.0\n10.0\n77.0\n81.0\n0.0\n0.0\n3430.0\n\n\n303695\nPeter\n2000\n11.0\n14.0\n11.0\n40.0\n379.0\n66.0\n72.0\n20.0\n...\n26.0\n147.0\n24.0\n62.0\n12.0\n68.0\n70.0\n0.0\n0.0\n3137.0\n\n\n\n\n324 rows × 54 columns\n\n\n\n\n\nShow the code\n# graph\n(\nggplot(data = famouseNames,\n  mapping = aes(x='year', y='Total', color='name'))\n  + geom_line()\n  + scale_x_continuous(format='')\n)",
+    "crumbs": [
+      "Story Telling",
+      "Project 3"
+    ]
+  },
+  {
+    "objectID": "Story_Telling/project3.html#question-2",
+    "href": "Story_Telling/project3.html#question-2",
+    "title": "Client Report - Famous Names",
+    "section": "QUESTION 2",
+    "text": "QUESTION 2\n\nThink of a unique name from a famous movie. Plot the usage of that name and see how changes line up with the movie release. Does it look like the movie had an effect on usage? You must provide a chart. The years labels on your charts should not include a comma.\n\nI chose Marty due to Marty McFly from back to the future which origionally came out in 1985. The unpopular name peaked in the 60s was allready on the come down when the movie came it only only continued to sit low nearly nobody named marty by the year 2000\n\n\nShow the code\n# Q2\nmovieName = (df.query(\"name == 'Marty'\"))\n\n(\nggplot(data = movieName,\n  mapping = aes(x='year', y='Total'))\n  + geom_line()\n  + scale_x_continuous(format='')\n  + geom_vline(xintercept=1962.5)\n  + geom_text(x=1991, y=1320, label='Number of people named Marty peaked', color='black', size=7)\n)",
     "crumbs": [
       "Story Telling",
       "Project 3"

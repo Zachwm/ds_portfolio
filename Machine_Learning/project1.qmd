@@ -1,7 +1,7 @@
 ---
-title: "Client Report - [Insert Project Title]"
-subtitle: "Course DS 250"
-author: "[STUDENT NAME]"
+title: "Client Report - Can You Predict That?"
+subtitle: "Unit 4 Task 1"
+author: "Zach McLaughlin"
 format:
   html:
     self-contained: true
@@ -25,4 +25,46 @@ execute:
     
 ---
 
-### Paste in a template
+```{python}
+import pandas as pd 
+import numpy as np
+from lets_plot import *
+# add the additional libraries you need to import for ML here
+
+LetsPlot.setup_html(isolated_frame=True)
+
+from sklearn.model_selection import train_test_split
+
+from sklearn.ensemble import RandomForestClassifier
+
+from sklearn.metrics import classification_report
+```
+
+
+```{python}
+# import your data here using pandas and the URL
+df = pd.read_csv('https://raw.githubusercontent.com/byuidatascience/data4dwellings/master/data-raw/dwellings_ml/dwellings_ml.csv')
+
+```
+
+## QUESTION
+
+__Build a classification model labeling houses as being built “before 1980” or “during or after 1980”.__ Your goal is to reach or exceed 90% accuracy. Report your final model choice and any other model parameters you may have tweaked (train-test split ratio, tuning parameters, etc).  
+
+I chose to use random forest because it had marginally better performance regarding the average f1 score.
+
+```{python}
+# Include and execute your code here
+X = df.drop(columns=['before1980', 'yrbuilt', 'parcel'])
+y = df.before1980
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)
+
+model = RandomForestClassifier()
+model.fit(X_train, y_train)
+
+pred = model.predict(X_test)
+
+print(classification_report(y_test, pred))
+```
+

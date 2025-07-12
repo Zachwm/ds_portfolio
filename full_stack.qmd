@@ -1,10 +1,266 @@
 ---
-title: "about me"
-subtitle: "my data science portfolio"
-# use quarto markdown to 
+title: "To Infinity and Beyond…wait wrong movie"
+subtitle: "Unit 5 Stretch"
+author: "Zach McLaughlin"
+format:
+  html:
+    self-contained: true
+    page-layout: full
+    title-block-banner: true
+    toc: true
+    toc-depth: 3
+    toc-location: body
+    number-sections: false
+    html-math-method: katex
+    code-fold: true
+    code-summary: "Show the code"
+    code-overflow: wrap
+    code-copy: hover
+    code-tools:
+        source: false
+        toggle: true
+        caption: See code
+execute: 
+  warning: false
+    
 ---
 
-# Title 1 Header
-## Title 2 Header
+## QUESTION 1
 
-[MarkDown Basics](https://quarto.org/docs/authoring/markdown-basics.html#links-images)
+__Build a machine learning model that predicts whether a person makes at least $50k with accuracy of at least 65%. Describe your model and report the accuracy.__
+
+I was able to use a gradient boosting classifier to predict from the organized data wether a person makes above 50k with an accuracy of 68%. I cleaned up alot of the data converting it with one hot encoding and filling the many missing inputs allowing the model to make better precictions. In the end i was just short so i went through different random states in my train test split and that put me just over the edge to meet the 65% requirement.
+
+```{python}
+import pandas as pd
+import numpy as np
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.metrics import accuracy_score, classification_report
+
+df = pd.read_csv('StarWars.csv', encoding='ISO-8859-1')
+
+col_rename = {
+  'RespondentID': 'id',
+  'Have you seen any of the 6 films in the Star Wars franchise?': 'seen_sw',
+  'Do you consider yourself to be a fan of the Star Wars film franchise?': 'fan_sw',
+  'Which of the following Star Wars films have you seen? Please select all that apply.': 'seen_1',
+  'Unnamed: 4': 'seen_2',
+  'Unnamed: 5': 'seen_3',
+  'Unnamed: 6': 'seen_4',
+  'Unnamed: 7': 'seen_5',
+  'Unnamed: 8': 'seen_6',
+  'Please rank the Star Wars films in order of preference with 1 being your favorite film in the franchise and 6 being your least favorite film.': 'rank_1',
+  'Unnamed: 10': 'rank_2',
+  'Unnamed: 11': 'rank_3',
+  'Unnamed: 12': 'rank_4',
+  'Unnamed: 13': 'rank_5',
+  'Unnamed: 14': 'rank_6',
+  'Please state whether you view the following characters favorably, unfavorably, or are unfamiliar with him/her.': 'HanSolo_rank',
+  'Unnamed: 16': 'LukeSkywalker_rank',
+  'Unnamed: 17': 'PrincessLeia_rank',
+  'Unnamed: 18': 'AnakinSkywalker_rank',
+  'Unnamed: 19': 'ObiWan_rank',
+  'Unnamed: 20': 'EmperorPalpatine_rank',
+  'Unnamed: 21': 'DarthVader_rank',
+  'Unnamed: 22': 'LandoCalrissian_rank',
+  'Unnamed: 23': 'BobaFett_rank',
+  'Unnamed: 24': 'C-3P0_rank',
+  'Unnamed: 25': 'R2D2_rank',
+  'Unnamed: 26': 'JarJar_rank',
+  'Unnamed: 27': 'PadmeAmidala_rank',
+  'Unnamed: 28': 'Yoda_rank',
+  'Which character shot first?': 'character_shot_first',
+  'Are you familiar with the Expanded Universe?': 'know_expanded',
+  'Do you consider yourself to be a fan of the Expanded Universe?ï¿½ï¿½': 'fan_of_expanded',
+  'Do you consider yourself to be a fan of the Star Trek franchise?': 'st_fan',
+  'Gender': 'gender',
+  'Age': 'age',
+  'Household Income': 'house_income',
+  'Education': 'education',
+  'Location (Census Region)': 'census_location'
+}
+
+df.rename(columns=col_rename, inplace=True)
+df.drop(index=0, inplace=True)
+
+for col in ['seen_1', 'seen_2', 'seen_3', 'seen_4', 'seen_5', 'seen_6']:
+    df[col] = df[col].apply(lambda x: 1 if not pd.isna(x) else 0)
+
+age_map = {
+    '18-29': 23.5,
+    '30-44': 37,
+    '45-60': 52.5,
+    '> 60': 65
+}
+df['age_num'] = df['age'].map(age_map)
+df.drop(columns='age', inplace=True)
+
+education_map = {
+    'Less than high school degree': 0,
+    'High school degree': 1,
+    'Some college or Associate degree': 2,
+    'Bachelor degree': 3,
+    'Graduate degree': 4
+}
+df['education_num'] = df['education'].map(education_map)
+df.drop(columns='education', inplace=True)
+
+income_map = {
+    '$0 - $24,999': 12500,
+    '$25,000 - $49,999': 37500,
+    '$50,000 - $99,999': 75000,
+    '$100,000 - $149,999': 125000,
+    '$150,000+': 175000
+}
+df['income_num'] = df['house_income'].map(income_map)
+df.drop(columns='house_income', inplace=True)
+
+df['target'] = df['income_num'].apply(lambda x: 1 if x >= 50000 else 0)
+
+favor_map = {
+    'Very favorably': 2,
+    'Somewhat favorably': 1,
+    'Unfamiliar (N/A)': 0,
+    'Neither favorably nor unfavorably (neutral)': 0,
+    'Somewhat unfavorably': -1,
+    'Very unfavorably': -2,
+    np.nan: 0
+}
+
+favor_cols = [col for col in df.columns if '_rank' in col]
+for col in favor_cols:
+    df[col.replace('_rank', '_score')] = df[col].map(favor_map)
+
+df.drop(columns=favor_cols, inplace=True)
+
+num_cols = ['age_num', 'education_num', 'income_num'] + [f'rank_{i}' for i in range(1,7)]
+df[num_cols] = df[num_cols].apply(pd.to_numeric, errors='coerce')
+df[num_cols] = df[num_cols].fillna(df[num_cols].median())
+
+cat_cols = ['seen_sw', 'fan_sw', 'character_shot_first', 'know_expanded', 'fan_of_expanded', 'st_fan', 'gender', 'census_location']
+for col in cat_cols:
+    if col in df.columns:
+        df[col] = df[col].fillna('Missing')
+
+cat_cols = ['seen_sw', 'fan_sw', 'character_shot_first', 'know_expanded', 'fan_of_expanded', 'st_fan', 'gender', 'census_location']
+
+encoder = OneHotEncoder(drop='first', dtype=int, sparse_output=False)
+encoded_array = encoder.fit_transform(df[cat_cols])
+
+encoded_df = pd.DataFrame(
+    encoded_array,
+    columns=encoder.get_feature_names_out(cat_cols),
+    index=df.index
+)
+
+df.drop(columns=cat_cols, inplace=True)
+
+df = pd.concat([df, encoded_df], axis=1)
+
+for col in [f'rank_{i}' for i in range(1,7)]:
+    df[col] = df[col].astype(int)
+df['education_num'] = df['education_num'].astype(int)
+df['age_num'] = df['age_num'].astype(int)
+
+df.drop(columns='id', inplace=True)
+
+X = df.drop(columns=['target', 'income_num'])
+y = df['target']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=6)
+
+model = GradientBoostingClassifier()
+model.fit(X_train, y_train)
+
+y_pred = model.predict(X_test)
+
+print(classification_report(y_test, y_pred))
+```
+
+## QUESTION 2
+
+__Validate the data provided on GitHub lines up with the article by recreating a 3rd visual from the article.__
+
+Below you can see a graph i created using letsplot that shows the rankings of how people rate each star wars movie seperating it into top third of their favorites, middle third, and bottom third.
+
+```{python}
+from lets_plot import *
+import pandas as pd
+
+LetsPlot.setup_html()
+
+rank_cols = [f'rank_{i}' for i in range(1, 7)]
+rank_movie_map = {
+    'rank_1': 'The Phantom Menace',
+    'rank_2': 'Attack of the Clones',
+    'rank_3': 'Revenge of the Sith',
+    'rank_4': 'A New Hope',
+    'rank_5': 'The Empire Strikes Back',
+    'rank_6': 'Return of the Jedi'
+}
+
+long_df = df[rank_cols].melt(var_name='RankCol', value_name='Rank')
+long_df['Movie'] = long_df['RankCol'].map(rank_movie_map)
+
+def ranking_category(rank):
+    rank = int(rank)
+    if rank in [1, 2]:
+        return 'Top third'
+    elif rank in [3, 4]:
+        return 'Middle third'
+    elif rank in [5, 6]:
+        return 'Bottom third'
+    return 'Unknown'
+
+long_df['Category'] = long_df['Rank'].astype(int).apply(ranking_category)
+
+group_counts = long_df.groupby(['Movie', 'Category']).size().unstack(fill_value=0)
+percent_df = group_counts.div(group_counts.sum(axis=1), axis=0) * 100
+plot_df = percent_df.reset_index().melt(id_vars='Movie', var_name='Category', value_name='Percentage')
+
+plot_df['Category'] = pd.Categorical(
+    plot_df['Category'],
+    categories=['Top third', 'Middle third', 'Bottom third'],
+    ordered=True
+)
+
+(
+ggplot(plot_df, aes(x='Movie', y='Percentage', fill='Category'))
+    +   geom_bar(stat='identity', position=position_dodge(width=0.8))
+    +   coord_flip()
+    +   scale_fill_manual(values={
+        'Top third': '#6DC067',
+        'Middle third': '#3498DB',
+        'Bottom third': '#E74C3C'
+    }) 
+    +   labs(
+            title='How People Rate the “Star Wars” Movies',
+            subtitle='Each film’s % ranking in the top, middle, and bottom third\n  (among 471 people who have seen all six)',
+            x='Movie',
+            y='Percentage (%)',
+            fill='Category'
+    )
+    +   theme(legend_position='right')
+)
+```
+
+## QUESTION 3
+
+__Create a new column that converts the location groupings to a single number (a.k.a. label encoding). Drop the location categorical column.__
+
+Since in the prep for the machine learning model i allready had used one hot encoding on the location, i redefined the df to start from scratch. Here I was able to use label encoder to conver the locations to a single number to allow that number to represent each area in the database.
+
+```{python}
+# Label encode census region
+from sklearn.preprocessing import LabelEncoder
+
+df = pd.read_csv('StarWars.csv', encoding='ISO-8859-1')
+
+le = LabelEncoder()
+df['census_location_code'] = le.fit_transform(df['Location (Census Region)'])
+df.drop(columns='Location (Census Region)', inplace=True)
+
+df
+```

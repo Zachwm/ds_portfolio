@@ -1,7 +1,7 @@
 ---
-title: "Client Report - [Insert Project Title]"
-subtitle: "Course DS 250"
-author: "[STUDENT NAME]"
+title: "Client Report - What's in a Name?"
+subtitle: "Unit 1 Task 2"
+author: "Zach McLaughlin"
 format:
   html:
     self-contained: true
@@ -25,4 +25,62 @@ execute:
     
 ---
 
-### Paste in a template
+```{python}
+import pandas as pd
+import numpy as np
+from lets_plot import *
+
+LetsPlot.setup_html(isolated_frame=True)
+```
+
+```{python}
+# Learn morea about Code Cells: https://quarto.org/docs/reference/cells/cells-jupyter.html
+
+# Include and execute your code here
+df = pd.read_csv("https://github.com/byuidatascience/data4names/raw/master/data-raw/names_year/names_year.csv")
+```
+
+## QUESTION 1
+
+<!-- Make sure at least one of your charts includes reference marks!! -->
+
+__How does your name at your birth year compare to its use historically? Your must provide a chart. The years labels on your charts should not include a comma.__ 
+
+My name spiked in the 90s and was becoming less common when i was born
+
+```{python}
+# Q1
+name_hist = df.query("name == 'Zachary' and year <= 2003")
+
+(
+  ggplot(data = name_hist,
+  mapping = aes(x = 'year', y = 'Total'))
+    + geom_line()
+    + scale_x_continuous(format = '0')
+)
+```
+
+
+## QUESTION 2
+
+__If you talked to someone named Brittany on the phone, what is your guess of his or her age? What ages would you not guess? Try to justify your answer with whatever statistics knowledge you have. You must provide a chart. The years labels on your charts should not include a comma.__  
+
+I think brittany is a name that was probably most common around the 80s making people with name around 45 years old today. After graphing, you can see that the name reached a peak popularity in the year 1990 so i was close with Brittanys today being most commonly 35 years old.
+
+```{python}
+# Q2
+
+name_hist = df.query("name == 'Brittany'")
+
+(
+  ggplot(data = name_hist,
+  mapping = aes(x = 'year', y = 'Total'))
+    + geom_line()
+    + scale_x_continuous(format = '0')
+    +   geom_text(x = 1980, y = 30000, label = 'The name Brittany peaked')
+)
+
+```
+
+
+<!-- Make sure at least one of your charts includes reference marks!! -->

@@ -1,7 +1,7 @@
 ---
-title: "Client Report - [Insert Project Title]"
-subtitle: "Course DS 250"
-author: "[STUDENT NAME]"
+title: "Client Report - Weather Delays"
+subtitle: "Unit 3 Task 2"
+author: "Zach McLaughlin"
 format:
   html:
     self-contained: true
@@ -13,7 +13,7 @@ format:
     number-sections: false
     html-math-method: katex
     code-fold: true
-    code-summary: "Show the code"
+    code-info: "Show the code"
     code-overflow: wrap
     code-copy: hover
     code-tools:
@@ -25,4 +25,104 @@ execute:
     
 ---
 
-### Paste in a template
+```{python}
+import pandas as pd 
+import numpy as np
+import sqlite3
+from lets_plot import *
+
+LetsPlot.setup_html(isolated_frame=True)
+```
+
+
+```{python}
+# Learn morea about Code Cells: https://quarto.org/docs/reference/cells/cells-jupyter.html
+
+# Include and execute your code here
+df = pd.read_json("https://github.com/byuidatascience/data4missing/raw/master/data-raw/flights_missing/flights_missing.json")
+```
+
+## QUESTION 1
+
+1. __Which airport has the worst delays?__ Describe the metric you chose, and why you chose it to determine the “worst” airport. Your answer should include a info table that lists (for each airport) the total number of flights, total number of delayed flights, proportion of delayed flights, and average delay time in hours. 
+
+  Here we can see that O'Hare International in Chicago has the longest average delay while San Francisco Internation Airport has the highest chance of a delay happening.
+
+```{python}
+info = df.groupby('airport_name').agg(
+    total_flights=('num_of_flights_total', 'sum'),
+    delayed_flights=('num_of_delays_total', 'sum'),
+    delay_minutes=('minutes_delayed_total', 'sum')
+)
+
+info['delay_proportion'] = info['delayed_flights'] / info['total_flights']
+info['avg_delay_hours'] = info['delay_minutes'] / info['delayed_flights'] / 60
+
+info.sort_values(by='avg_delay_hours', ascending=False).round(2)
+
+```
+
+## QUESTION 2
+
+According to the BTS website, the “Weather” category only accounts for severe weather delays. Mild weather delays are not counted in the “Weather” category, but are actually included in both the “NAS” and “Late-Arriving Aircraft” categories. __Your job is to create a new column that calculates the total number of flights delayed by weather (both severe and mild).__ You will need to replace all the missing values in the Late Aircraft variable with the mean. Show your work by printing the first 5 rows of data in a table. Use these three rules for your calculations:  
+
+    a. 100% of delayed flights in the Weather category are due to weather  
+    a. 30% of all delayed flights in the Late-Arriving category are due to weather  
+    a. From April to August, 40% of delayed flights in the NAS category are due to weather. The rest of the months, the proportion rises to 65%  
+
+Here we can see that Hartsfield Jacksons Atlanta Airport has by far the most delays due to all weather sources.
+
+```{python}
+df['num_of_delays_late_aircraft'] = df['num_of_delays_late_aircraft'].fillna(df['num_of_delays_late_aircraft'].mean())
+
+month_map = {
+    'January': 1, 'February': 2, 'March': 3,
+    'April': 4, 'May': 5, 'June': 6,
+    'July': 7, 'August': 8, 'September': 9,
+    'October': 10, 'November': 11, 'December': 12
+}
+
+month_num = df['month'].map(month_map)
+
+df['nas_weather_fraction'] = np.where(
+    month_num.between(4, 8), 
+    0.40, 
+    0.65
+)
+
+df['weather_delay_total'] = (
+    df['num_of_delays_weather'] + 
+    0.30 * df['num_of_delays_late_aircraft'] + 
+    df['num_of_delays_nas'] * df['nas_weather_fraction']
+)
+
+df['weather_delay_total'] = round(df['weather_delay_total'], 2)
+
+df[['airport_name', 'month', 'weather_delay_total']]
+```
+
+## Question 3
+
+__Using the new weather variable calculated above, create a barplot showing the proportion of all flights that are delayed by weather at each airport. Describe what you learn from this graph.__  
+
+This graph shows the proportion of flights that are delayed due to weather which really just shows which citys have bad weather the most.
+
+```{python}
+weather_summary = df.groupby('airport_name').agg(
+    total_flights=('num_of_flights_total', 'sum'),
+    weather_delays=('weather_delay_total', 'sum')
+).reset_index()
+
+weather_summary['weather_delay_rate'] = (
+    weather_summary['weather_delays'] / weather_summary['total_flights']
+)
+
+(
+ggplot(weather_summary, aes(x='airport_name', y='weather_delay_rate'))
+  + geom_bar(stat='identity', fill='#1f77b4')
+  + coord_flip()
+  + ggtitle("Proportion of Flights Delayed by Weather")
+  + ylab("Delay Rate")
+  + xlab("Airport")
+)
+```

@@ -1,10 +1,53 @@
----
-title: "about me"
-subtitle: "my data science portfolio"
-# use quarto markdown to 
----
 
-# Title 1 Header
-## Title 2 Header
+```{python}
+import pandas as pd 
+import numpy as np
+import sqlite3
+from lets_plot import *
 
-[MarkDown Basics](https://quarto.org/docs/authoring/markdown-basics.html#links-images)
+LetsPlot.setup_html(isolated_frame=True)
+```
+
+
+```{python}
+# Learn morea about Code Cells: https://quarto.org/docs/reference/cells/cells-jupyter.html
+
+# Include and execute your code here
+sqlite_file = 'lahmansbaseballdb.sqlite'
+# this file must be in the same location as your .qmd or .py file
+con = sqlite3.connect(sqlite_file)
+```
+
+
+```{python}
+q = '''
+    WITH primary_position AS (
+        SELECT playerID, yearID, POS,
+           ROW_NUMBER() OVER (PARTITION BY playerID, yearID ORDER BY SUM(G) DESC) as rn
+        FROM fielding
+        GROUP BY playerID, yearID, POS
+    ),
+    position_salaries AS (
+        SELECT f.playerID, f.yearID, f.POS, s.salary
+        FROM primary_position f
+        JOIN salaries s ON f.playerID = s.playerID AND f.yearID = s.yearID
+        WHERE f.rn = 1
+    )
+    SELECT 
+        POS AS position,
+        ROUND(AVG(salary), 2) AS average_salary,
+        COUNT(DISTINCT playerID) AS total_players,
+        MAX(salary) AS highest_salary,
+        CASE 
+            WHEN AVG(salary) > 3000000 THEN 'High Salary'
+            WHEN AVG(salary) BETWEEN 2000000 AND 3000000 THEN 'Medium Salary'
+            ELSE 'Low Salary'
+        END AS salary_category
+        FROM position_salaries
+        GROUP BY POS
+        ORDER BY average_salary DESC;
+    '''
+
+results = pd.read_sql_query(q, con)
+results
+```

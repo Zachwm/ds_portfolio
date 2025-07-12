@@ -1,7 +1,7 @@
 ---
-title: "Client Report - [Insert Project Title]"
-subtitle: "Course DS 250"
-author: "[STUDENT NAME]"
+title: "Client Report - If not now, when?"
+subtitle: "Unit 3 Task 3"
+author: "Zach McLaughlin"
 format:
   html:
     self-contained: true
@@ -25,4 +25,62 @@ execute:
     
 ---
 
-### Paste in a template
+```{python}
+import pandas as pd 
+import numpy as np
+import sqlite3
+from lets_plot import *
+
+LetsPlot.setup_html(isolated_frame=True)
+```
+
+
+```{python}
+# Learn morea about Code Cells: https://quarto.org/docs/reference/cells/cells-jupyter.html
+
+# Include and execute your code here
+df = pd.read_json("https://github.com/byuidatascience/data4missing/raw/master/data-raw/flights_missing/flights_missing.json")
+
+df
+```
+
+## QUESTION 1
+
+__What is the best month to fly if you want to avoid delays of any length?__ Describe the metric you chose and why you chose it to calculate your answer. Include one chart to help support your answer, with the x-axis ordered by month.
+
+I used a variable i calculated delay_ratio by dividing total delays by total flights and then grouping by month and getting the average of each airport. With this I was able to create a graph that shows September is the optimal month to fly.
+
+```{python}
+# replace missing values to np.nan to easier be dealt with
+missing_values = ["", 'n/a', -999]
+df = df.replace(missing_values, np.nan)
+df['month'] = df['month'].ffill()
+
+# create new delay ratio column to be used to find month with least chance of a delay of any length happening
+df['delay_ratio'] = df['num_of_delays_total'] / df['num_of_flights_total']
+
+# group by month
+info = df.groupby('month').agg(
+  delay_ratio = ('delay_ratio', 'mean')
+).reset_index()
+
+# fix missspelling of february
+info['month'] = info['month'].replace('Febuary', 'February')
+
+# orders months correctly
+month_order = ['January', 'February', 'March', 'April', 'May', 'June',
+               'July', 'August', 'September', 'October', 'November', 'December']
+
+info['month'] = pd.Categorical(info['month'], categories=month_order, ordered=True)
+
+info
+
+(
+  ggplot(info, aes(x='month', y='delay_ratio')) 
+  + geom_bar(stat='identity', fill='grey', color='black')
+  + ylab("Delay Rate")
+  + theme_classic()
+)
+
+```
+
