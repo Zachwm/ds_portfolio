@@ -1,89 +1,72 @@
 ---
 layout: cv
-title: Isaac Newtons's CV
+title: Zach McLaughlin's CV
 ---
-# Isaac Newton
-Physicist, Mathematician, Cambridge professor.
+# Zachary W. McLaughlin
+Computer Science Student
 
 <div id="webaddress">
-<a href="isaac@applesdofall.org">isaac@applesdofall.org</a>
-| <a href="http://en.wikipedia.org/wiki/Isaac_Newton">My wikipedia page</a>
+<a href="mailto:zwmclaughlin@gmail.com">zwmclaughlin@gmail.com</a> |
+(346)-220-7787 |
+<a href="https://www.linkedin.com/in/zacharymcl/">LinkedIn</a> |
+<a href="https://github.com/Zachwm">GitHub</a>
 </div>
-
-
-## Currently
-
-Standing on the shoulders of giants
-
-### Specialized in
-
-Laws of motion, gravitation, minting coins, disliking [Robert Hooke](http://en.wikipedia.org/wiki/Robert_Hooke)
-
-
-### Research interests
-
-Cooling, power series, optics, alchemy, planetary motions, apples.
-
 
 ## Education
 
-`1654-1660`
-__The King's School, Grantham.__
+`Expected August 2026`  
+**Brigham Young University - Idaho**, Rexburg, Idaho  
+Bachelor of Science in Computer Science  
+- Concentrations: Software Development, Algorithms & Data Structures, Programming Principles, Databases  
+- Relevant Coursework: Data Structures, Parallelism & Concurrency, Algorithms, Discrete Mathematics, Cybersecurity, OOP, Linear Algebra, Linux, Data Science, Machine Learning
 
-`June 1661 - now`
-__Trinity College, Cambridge__
+## Skills
 
-- Sizar
+**Languages:** Python, C#, SQL, HTML/CSS  
+**Frameworks:** Django, Firebase  
+**Tools:** Git, MySQL, VS Code, Tkinter, Pandas, NumPy
 
-`1667 - death`
-__Trinity College, Cambridge__
+## Experience
 
-- Fellow
+`Jul 2024 – Oct 2024`  
+**Tag-N-Go Car Wash**, Rexburg, Idaho  
+*Sales and Service Associate*  
+- Strategized with team to meet sales goals and increase membership enrollment.  
+- Operated and maintained car wash facilities; handled high daily volume.
 
+`Jun 2022 – Sep 2022`  
+**Regal Cinemas**, Houston, Texas  
+*Cashier, Ticket Assistant, Usher*  
+- Processed transactions and assisted customers at the front register.  
+- Guided guests to theaters and ensured smooth operations.
 
+`Jul 2021 – Dec 2021`  
+**Copper Tree Tech**, Houston, Texas  
+*Worksite Helper*  
+- Supported technicians on audio, video, lighting, and automation projects.  
+- Assisted with equipment setup, measurements, and material prep.
 
-## Awards
+## Projects
 
-`2012`
-President, *Royal Society*, London, UK
+`Oct 2024`  
+**Car Maintenance App**, Rexburg, Idaho  
+- Built a Django + Firebase web app to manage car maintenance schedules.  
+- Implemented secure user login with Firebase Authentication.
 
-Associate, *French Academy of Science*, Paris, France
+`July 2023`  
+**Disease Simulator**, Rexburg, Idaho  
+- Developed an interactive Python/Tkinter simulator to model disease spread with adjustable parameters.
 
+## Activities and Leadership
 
+`Aug 2017 – Dec 2017`  
+**Eagle Scout Project**, Houston, Texas  
+*Project Organizer*  
+- Led a donation drive providing clothing and supplies to human trafficking survivors.  
+- Coordinated drop-off boxes and community outreach.
 
-## Publications
+`May 2025 – Present`  
+**Computing Society**, Rexburg, Idaho  
+*Member*  
+- Participate in workshops and discussions on new technologies and career prep.
 
-<!-- A list is also available [online](http://scholar.google.co.uk/citations?user=LTOTl0YAAAAJ) -->
-
-### Journals
-
-`1669`
-Newton Sir I, De analysi per æquationes numero terminorum infinitas. 
-
-`1669`
-Lectiones opticæ.
-
-etc. etc. etc.
-
-### Patents
-
-`2012`
-Infinitesimal calculus for solutions to physics problems, [SMBC](http://www.techdirt.com/articles/20121011/09312820678/if-patents-had-been-around-time-newton.shtml) patent 001
-
-
-## Occupation
-
-`1600`
-__Royal Mint__, London
-
-- Warden
-- Minted coins
-
-`1600`
-__Lucasian professor of Mathematics__, Cambridge University
-
-
-
-<!-- ### Footer
-
-Last updated: May 2013 -->
